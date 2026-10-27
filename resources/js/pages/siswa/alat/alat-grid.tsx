@@ -32,8 +32,16 @@ export function AlatGrid({ items, onOpenDetail }: AlatGridProps) {
                     onClick={() => onOpenDetail(item)}
                     className="flex flex-col items-center justify-between p-3.5 rounded-xl bg-white border border-zinc-200 hover:border-blue-500 transition-all text-center group cursor-pointer shadow-2xs hover:shadow-sm"
                 >
-                    <div className="w-full aspect-[4/3] rounded-lg bg-zinc-50 flex items-center justify-center mb-2.5 group-hover:scale-105 transition-transform">
-                        <ItemIllustration type={item.iconType} className="w-16 h-12" />
+                    <div className="w-full aspect-[4/3] rounded-lg bg-zinc-50 flex items-center justify-center mb-2.5 group-hover:scale-105 transition-transform overflow-hidden">
+                        {item.imageUrl ? (
+                            <img
+                                src={item.imageUrl}
+                                alt={item.name}
+                                className="w-full h-full object-cover rounded-lg"
+                            />
+                        ) : (
+                            <ItemIllustration type={item.iconType} className="w-16 h-12" />
+                        )}
                     </div>
 
                     <div className="w-full">

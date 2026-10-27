@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, ArrowRight, Info } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Info, ZoomIn, X } from 'lucide-react';
 import { ItemIllustration } from './item-illustration';
 import type { InventoryItem } from '@/data/inventory-data';
 import { Button } from '@/components/ui/button';
@@ -17,6 +17,7 @@ interface ItemDetailModalProps {
 export function ItemDetailModal({ item, open, isOpen, onClose, onLoanSuccess }: ItemDetailModalProps) {
     const isModalOpen = open ?? isOpen ?? false;
     const [isBorrowing, setIsBorrowing] = useState(false);
+    const [isImageZoomed, setIsImageZoomed] = useState(false);
 
     const getTodayString = () => new Date().toISOString().split('T')[0];
     const getEstimateString = () => {
@@ -46,7 +47,8 @@ export function ItemDetailModal({ item, open, isOpen, onClose, onLoanSuccess }: 
     };
 
     return (
-        <Dialog open={isModalOpen} onOpenChange={(val) => !val && onClose()}>
+        <>
+            <Dialog open={isModalOpen} onOpenChange={(val) => !val && onClose()}>
             <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto p-0 rounded-xl border border-zinc-200 bg-white">
                 <DialogHeader className="p-4 border-b border-zinc-100 flex flex-row items-center justify-between sticky top-0 bg-white z-20">
                     <DialogTitle className="text-sm font-bold text-zinc-900">
@@ -57,8 +59,27 @@ export function ItemDetailModal({ item, open, isOpen, onClose, onLoanSuccess }: 
                 {!isBorrowing ? (
                     <div className="p-5 space-y-4">
                         {/* Image */}
-                        <div className="rounded bg-zinc-50 p-4 flex flex-col items-center justify-center border border-zinc-100">
-                            <ItemIllustration type={item.iconType} className="w-32 h-24" />
+                        <div className="rounded-lg bg-zinc-50 p-3 flex flex-col items-center justify-center border border-zinc-100 overflow-hidden relative group">
+                            {item.imageUrl ? (
+                                <>
+                                    <img
+                                        src={item.imageUrl}
+                                        alt={item.name}
+                                        onClick={() => setIsImageZoomed(true)}
+                                        className="max-h-52 w-full object-contain rounded cursor-pointer hover:opacity-95 transition-opacity"
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() => setIsImageZoomed(true)}
+                                        className="absolute bottom-2 right-2 px-2.5 py-1 bg-black/70 hover:bg-black/90 text-white rounded text-[11px] font-medium flex items-center gap-1.5 backdrop-blur-xs transition-colors cursor-pointer"
+                                    >
+                                        <ZoomIn className="w-3.5 h-3.5" />
+                                        <span>Lihat Ukuran Penuh</span>
+                                    </button>
+                                </>
+                            ) : (
+                                <ItemIllustration type={item.iconType} className="w-32 h-24" />
+                            )}
                         </div>
 
                         {/* Title & Status */}
@@ -203,5 +224,37 @@ export function ItemDetailModal({ item, open, isOpen, onClose, onLoanSuccess }: 
                 )}
             </DialogContent>
         </Dialog>
+
+        {/* Modal Zoom Gambar Penuh */}
+        {item && item.imageUrl && (
+            <Dialog open={isImageZoomed} onOpenChange={setIsImageZoomed}>
+                <DialogContent className="max-w-2xl w-full p-2 bg-white/95 backdrop-blur-md rounded-2xl border border-zinc-200 shadow-2xl overflow-hidden">
+                    <div className="relative">
+                        <div className="p-3 border-b border-zinc-100 flex items-center justify-between">
+                            <div>
+                                <h4 className="font-bold text-sm text-zinc-900">{item.name}</h4>
+                                <p className="text-[11px] text-zinc-500 font-mono">Kode: {item.code}</p>
+                            </div>
+                            <button
+                                type="button"
+                                onClick={() => setIsImageZoomed(false)}
+                                className="w-8 h-8 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-700 flex items-center justify-center cursor-pointer transition-colors"
+                                title="Tutup"
+                            >
+                                <X className="w-4 h-4" />
+                            </button>
+                        </div>
+                        <div className="p-4 flex items-center justify-center bg-zinc-50 rounded-xl overflow-hidden min-h-[300px] max-h-[75vh]">
+                            <img
+                                src={item.imageUrl}
+                                alt={item.name}
+                                className="max-h-[70vh] w-auto max-w-full object-contain rounded-lg shadow-sm"
+                            />
+                        </div>
+                    </div>
+                </DialogContent>
+            </Dialog>
+        )}
+    </>
     );
 }

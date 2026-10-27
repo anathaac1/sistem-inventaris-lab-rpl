@@ -42,7 +42,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::get('alat', [AdminAlatController::class, 'index'])->name('alat.index');
     Route::post('alat', [AdminAlatController::class, 'store'])->name('alat.store');
-    Route::put('alat/{alat}', [AdminAlatController::class, 'update'])->name('alat.update');
+    Route::match(['put', 'post'], 'alat/{alat}', [AdminAlatController::class, 'update'])->name('alat.update');
     Route::delete('alat/{alat}', [AdminAlatController::class, 'destroy'])->name('alat.destroy');
     Route::patch('alat/{alat}/visibility', [AdminAlatController::class, 'toggleVisibility'])->name('alat.visibility');
 

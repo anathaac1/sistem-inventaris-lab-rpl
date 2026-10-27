@@ -35,7 +35,7 @@ export function ProfilePasswordModal({
             <DialogContent className="max-w-sm rounded-2xl bg-white p-5 border border-slate-200 shadow-xl">
                 <DialogHeader>
                     <DialogTitle className="text-base font-bold text-slate-900 flex items-center gap-2">
-                        <Lock className="w-4 h-4 text-[#0256D0]" />
+                        {/* <Lock className="w-4 h-4 text-[#0256D0]" /> */}
                         <span>Ganti Kata Sandi Admin</span>
                     </DialogTitle>
                 </DialogHeader>
@@ -57,12 +57,13 @@ export function ProfilePasswordModal({
                                 onClick={() => setShowOldPassword(!showOldPassword)}
                                 className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
                                 tabIndex={-1}
-                                title={showOldPassword ? 'Sembunyikan password' : 'Lihat password'}
+                                title={showOldPassword ? 'Lihat password' : 'Sembunyikan password'}
                             >
                                 {showOldPassword ? (
-                                    <EyeOff className="w-4 h-4" />
-                                ) : (
                                     <Eye className="w-4 h-4" />
+                                ) : (
+                                  
+                                    <EyeOff className="w-4 h-4" />
                                 )}
                             </button>
                         </div>
@@ -87,9 +88,9 @@ export function ProfilePasswordModal({
                                 title={showNewPassword ? 'Sembunyikan password' : 'Lihat password'}
                             >
                                 {showNewPassword ? (
-                                    <EyeOff className="w-4 h-4" />
-                                ) : (
                                     <Eye className="w-4 h-4" />
+                                ) : (
+                                    <EyeOff className="w-4 h-4" />
                                 )}
                             </button>
                         </div>
@@ -114,9 +115,9 @@ export function ProfilePasswordModal({
                                 title={showConfirmPassword ? 'Sembunyikan password' : 'Lihat password'}
                             >
                                 {showConfirmPassword ? (
-                                    <EyeOff className="w-4 h-4" />
-                                ) : (
                                     <Eye className="w-4 h-4" />
+                                ) : (  
+                                    <EyeOff className="w-4 h-4" />
                                 )}
                             </button>
                         </div>

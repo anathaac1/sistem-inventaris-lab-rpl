@@ -120,7 +120,7 @@ export function ProfileModal({ isOpen, onClose, session, user }: ProfileModalPro
                         {/* Action buttons */}
                         <div className="bg-white border border-slate-200/90 rounded-xl divide-y divide-slate-100 shadow-2xs overflow-hidden">
                             {/* Ganti Kata Sandi */}
-                            <button
+                            {/* <button
                                 type="button"
                                 onClick={() => setPasswordModalOpen(true)}
                                 className="w-full flex items-center justify-between p-3.5 hover:bg-slate-50 transition-colors text-left group cursor-pointer"
@@ -139,7 +139,7 @@ export function ProfileModal({ isOpen, onClose, session, user }: ProfileModalPro
                                     </div>
                                 </div>
                                 <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-slate-600" />
-                            </button>
+                            </button> */}
                         </div>
                     </div>
                 </DialogContent>

@@ -49,10 +49,18 @@ export function AlatTable({
                                         <div className="flex items-center gap-3.5">
                                             <div
                                                 onClick={() => onViewDetail(item)}
-                                                className="w-10 h-10 rounded bg-slate-50 border border-slate-200 flex items-center justify-center shrink-0 cursor-pointer hover:border-blue-400 transition-colors"
+                                                className="w-10 h-10 rounded bg-slate-50 border border-slate-200 flex items-center justify-center shrink-0 cursor-pointer hover:border-blue-400 transition-colors overflow-hidden"
                                                 title="Klik untuk melihat detail"
                                             >
-                                                <ItemIllustration type={item.iconType} className="w-6 h-6" />
+                                                {item.imageUrl ? (
+                                                    <img
+                                                        src={item.imageUrl}
+                                                        alt={item.name}
+                                                        className="w-full h-full object-cover"
+                                                    />
+                                                ) : (
+                                                    <ItemIllustration type={item.iconType} className="w-6 h-6" />
+                                                )}
                                             </div>
                                             <div className="min-w-0">
                                                 <button

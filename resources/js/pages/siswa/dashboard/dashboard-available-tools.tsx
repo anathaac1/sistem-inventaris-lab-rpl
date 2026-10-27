@@ -38,8 +38,16 @@ export function DashboardAvailableTools({
                             onClick={() => onOpenDetail(item)}
                             className="flex flex-col items-center justify-between p-3 rounded-lg bg-white border border-zinc-200 hover:border-blue-500 transition-colors text-center cursor-pointer"
                         >
-                            <div className="w-full aspect-[4/3] rounded bg-zinc-50 flex items-center justify-center mb-2">
-                                <ItemIllustration type={item.iconType} className="w-16 h-12" />
+                            <div className="w-full aspect-[4/3] rounded bg-zinc-50 flex items-center justify-center mb-2 overflow-hidden">
+                                {item.imageUrl ? (
+                                    <img
+                                        src={item.imageUrl}
+                                        alt={item.name}
+                                        className="w-full h-full object-cover rounded"
+                                    />
+                                ) : (
+                                    <ItemIllustration type={item.iconType} className="w-16 h-12" />
+                                )}
                             </div>
 
                             <div className="w-full">

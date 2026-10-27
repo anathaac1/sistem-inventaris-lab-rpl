@@ -51,7 +51,11 @@ export default function AdminAlat({ initialItems = [] }: AdminAlatProps) {
         description: '',
         iconType: 'laptop',
         isVisibleToStudents: true,
-        specs: [{ key: '', value: '' }]
+        specs: [],
+        imageFile: null,
+        imagePreview: null,
+        imageSizeText: null,
+        removeImage: false
     });
 
     // Filter items based on appliedFilters
@@ -136,7 +140,11 @@ export default function AdminAlat({ initialItems = [] }: AdminAlatProps) {
             description: '',
             iconType: 'laptop',
             isVisibleToStudents: true,
-            specs: [{ key: '', value: '' }]
+            specs: [],
+            imageFile: null,
+            imagePreview: null,
+            imageSizeText: null,
+            removeImage: false
         });
         setIsFormModalOpen(true);
     };
@@ -159,7 +167,11 @@ export default function AdminAlat({ initialItems = [] }: AdminAlatProps) {
             description: item.description || '',
             iconType: item.iconType || 'laptop',
             isVisibleToStudents: item.isVisibleToStudents !== false,
-            specs: specsList.length > 0 ? specsList : [{ key: 'Tipe', value: '' }]
+            specs: specsList,
+            imageFile: null,
+            imagePreview: item.imageUrl || null,
+            imageSizeText: item.imageSizeFormatted || null,
+            removeImage: false
         });
 
         setSelectedDetailItem(null);
@@ -170,27 +182,46 @@ export default function AdminAlat({ initialItems = [] }: AdminAlatProps) {
     const handleSaveForm = (e: React.FormEvent) => {
         e.preventDefault();
 
+        const stockNum = Number(formData.stock);
+        const totalNum = Number(formData.total);
+
+        if (stockNum > totalNum) {
+            toast.error('Stok siap pakai tidak boleh lebih besar dari total unit fisik lab.');
+            return;
+        }
+
         const compiledSpecs: Record<string, string> = {};
         formData.specs.forEach((s) => {
-            if (s.key.trim()) {
-                compiledSpecs[s.key.trim()] = s.value.trim() || '-';
+            if (s.key.trim() && s.value.trim()) {
+                compiledSpecs[s.key.trim()] = s.value.trim();
             }
         });
 
-        const payload = {
-            name: formData.name.trim(),
-            code: formData.code.trim(),
-            category: formData.category,
-            stock: Number(formData.stock),
-            total: Number(formData.total),
-            description: formData.description.trim(),
-            icon_type: formData.iconType,
-            is_visible_to_students: formData.isVisibleToStudents,
-            specs: compiledSpecs,
-        };
+        const data = new FormData();
+        data.append('name', formData.name.trim());
+        data.append('code', formData.code.trim());
+        data.append('category', formData.category);
+        data.append('stock', String(formData.stock));
+        data.append('total', String(formData.total));
+        data.append('description', formData.description.trim());
+        data.append('icon_type', formData.iconType || 'laptop');
+        data.append('is_visible_to_students', formData.isVisibleToStudents ? '1' : '0');
+
+        Object.entries(compiledSpecs).forEach(([key, val]) => {
+            data.append(`specs[${key}]`, val);
+        });
+
+        if (formData.imageFile) {
+            data.append('image', formData.imageFile);
+        }
+
+        if (formData.removeImage) {
+            data.append('remove_image', '1');
+        }
 
         if (editingItem) {
-            router.put(`/admin/alat/${editingItem.id}`, payload, {
+            data.append('_method', 'PUT');
+            router.post(`/admin/alat/${editingItem.id}`, data, {
                 preserveScroll: true,
                 onSuccess: () => {
                     toast.success(`Data alat "${formData.name}" berhasil diperbarui!`);
@@ -201,7 +232,7 @@ export default function AdminAlat({ initialItems = [] }: AdminAlatProps) {
                 }
             });
         } else {
-            router.post('/admin/alat', payload, {
+            router.post('/admin/alat', data, {
                 preserveScroll: true,
                 onSuccess: () => {
                     toast.success(`Alat baru "${formData.name}" berhasil ditambahkan ke inventaris!`);

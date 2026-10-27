@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Alat;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -19,8 +20,8 @@ class AlatController extends Controller
         }
 
         try {
-            Alat::where('description', 'like', '%✨%')->get()->each(function ($a) {
-                $a->description = trim(str_replace('✨', '', $a->description));
+            Alat::where('description', 'like', '%%')->get()->each(function ($a) {
+                $a->description = trim(str_replace('', '', $a->description));
                 $a->save();
             });
 
@@ -40,13 +41,21 @@ class AlatController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'code' => ['required', 'string', 'max:50', 'unique:alats,code'],
             'category' => ['required', 'string', 'max:100'],
-            'stock' => ['required', 'integer', 'min:0'],
             'total' => ['required', 'integer', 'min:0'],
+            'stock' => ['required', 'integer', 'min:0', 'lte:total'],
             'description' => ['nullable', 'string'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp,svg', 'max:2048'],
             'icon_type' => ['nullable', 'string'],
             'is_visible_to_students' => ['boolean'],
             'specs' => ['nullable', 'array'],
+        ], [
+            'stock.lte' => 'Stok siap pakai tidak boleh melebihi total unit fisik lab.',
         ]);
+
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('alats', 'public');
+        }
 
         Alat::create([
             'name' => $validated['name'],
@@ -55,6 +64,7 @@ class AlatController extends Controller
             'stock' => $validated['stock'],
             'total' => $validated['total'],
             'description' => $validated['description'] ?? '',
+            'image' => $imagePath,
             'icon_type' => $validated['icon_type'] ?? 'laptop',
             'is_visible_to_students' => $validated['is_visible_to_students'] ?? true,
             'specs' => $validated['specs'] ?? [],
@@ -69,13 +79,36 @@ class AlatController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'code' => ['required', 'string', 'max:50', 'unique:alats,code,' . $alat->id],
             'category' => ['required', 'string', 'max:100'],
-            'stock' => ['required', 'integer', 'min:0'],
             'total' => ['required', 'integer', 'min:0'],
+            'stock' => ['required', 'integer', 'min:0', 'lte:total'],
             'description' => ['nullable', 'string'],
+            'image' => ['nullable'],
             'icon_type' => ['nullable', 'string'],
             'is_visible_to_students' => ['boolean'],
             'specs' => ['nullable', 'array'],
+        ], [
+            'stock.lte' => 'Stok siap pakai tidak boleh melebihi total unit fisik lab.',
         ]);
+
+        if ($request->hasFile('image')) {
+            $request->validate([
+                'image' => ['image', 'mimes:jpeg,png,jpg,webp,svg', 'max:2048'],
+            ]);
+
+            // Hapus gambar lama jika ada di storage public
+            if ($alat->image && Storage::disk('public')->exists($alat->image)) {
+                Storage::disk('public')->delete($alat->image);
+            }
+
+            $validated['image'] = $request->file('image')->store('alats', 'public');
+        } elseif ($request->input('remove_image')) {
+            if ($alat->image && Storage::disk('public')->exists($alat->image)) {
+                Storage::disk('public')->delete($alat->image);
+            }
+            $validated['image'] = null;
+        } else {
+            unset($validated['image']);
+        }
 
         $alat->update($validated);
 

@@ -6,6 +6,9 @@ export interface InventoryItem {
     stock: number;
     total: number;
     description: string;
+    image?: string | null;
+    imageUrl?: string | null;
+    imageSizeFormatted?: string | null;
     specs: Record<string, string>;
     iconType: 'laptop' | 'charger' | 'mouse' | 'lan' | 'headset' | 'power' | 'screwdriver' | 'speaker' | 'keyboard' | 'scissors' | 'flashdisk';
     status: 'Tersedia' | 'Dipinjam';

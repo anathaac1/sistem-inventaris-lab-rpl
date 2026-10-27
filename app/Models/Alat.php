@@ -19,6 +19,7 @@ class Alat extends Model
         'stock',
         'total',
         'description',
+        'image',
         'specs',
         'icon_type',
         'is_visible_to_students',
@@ -35,6 +36,8 @@ class Alat extends Model
         'status',
         'iconType',
         'isVisibleToStudents',
+        'imageUrl',
+        'imageSizeFormatted',
     ];
 
     public function peminjamans(): HasMany
@@ -55,5 +58,41 @@ class Alat extends Model
     public function getIsVisibleToStudentsAttribute(): bool
     {
         return (bool) ($this->attributes['is_visible_to_students'] ?? true);
+    }
+
+    public function getImageUrlAttribute(): ?string
+    {
+        $image = $this->attributes['image'] ?? null;
+        if (!$image) {
+            return null;
+        }
+
+        if (str_starts_with($image, 'http://') || str_starts_with($image, 'https://') || str_starts_with($image, '/')) {
+            return $image;
+        }
+
+        return asset('storage/' . $image);
+    }
+
+    public function getImageSizeFormattedAttribute(): ?string
+    {
+        $image = $this->attributes['image'] ?? null;
+        if (!$image) {
+            return null;
+        }
+
+        try {
+            if (\Illuminate\Support\Facades\Storage::disk('public')->exists($image)) {
+                $bytes = \Illuminate\Support\Facades\Storage::disk('public')->size($image);
+                if ($bytes >= 1048576) {
+                    return number_format($bytes / 1048576, 1) . ' MB';
+                }
+                return number_format($bytes / 1024, 1) . ' KB';
+            }
+        } catch (\Throwable) {
+            return null;
+        }
+
+        return null;
     }
 }

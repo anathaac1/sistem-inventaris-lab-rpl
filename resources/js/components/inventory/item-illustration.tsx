@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface ItemIllustrationProps {
-    type: string;
+    type?: string | null;
     className?: string;
 }
 
@@ -191,8 +191,20 @@ export function ItemIllustration({ type, className = 'w-16 h-16' }: ItemIllustra
         default:
             return (
                 <svg viewBox="0 0 100 80" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="25" y="20" width="50" height="40" rx="6" fill="#0284C7" />
-                    <circle cx="50" cy="40" r="10" fill="white" fillOpacity="0.8" />
+                    {/* Background Soft Slate Plate */}
+                    <rect x="18" y="10" width="64" height="60" rx="10" fill="#F1F5F9" stroke="#E2E8F0" strokeWidth="2" />
+                    {/* Wrench and Screwdriver / Tools Default Badge */}
+                    <g transform="translate(26, 16)">
+                        {/* Screwdriver */}
+                        <path d="M12 36L28 20L34 26L18 42L12 36Z" fill="#94A3B8" />
+                        <path d="M30 18L34 14C35 13 37 13 38 14L40 16C41 17 41 19 40 20L36 24L30 18Z" fill="#0256D0" />
+                        <circle cx="10" cy="44" r="2.5" fill="#64748B" />
+                        {/* Wrench Crossed */}
+                        <path d="M34 36L18 20L12 26L28 42L34 36Z" fill="#CBD5E1" />
+                        <path d="M16 18C15 16 16 13 18 11C20 9 23 9 25 10L21 14L22 17L25 18L29 14C30 16 30 19 28 21C26 23 23 24 20 23L16 18Z" fill="#3B82F6" />
+                    </g>
+                    {/* Small Hardware Dot Indicator */}
+                    <circle cx="50" cy="62" r="2.5" fill="#0256D0" />
                 </svg>
             );
     }

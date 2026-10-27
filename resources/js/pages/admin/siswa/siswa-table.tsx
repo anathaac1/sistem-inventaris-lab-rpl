@@ -24,7 +24,7 @@ export function SiswaTable({
                         <th className="py-3.5 px-5">Pengguna & Peran</th>
                         <th className="py-3.5 px-4">Username Login</th>
                         <th className="py-3.5 px-4">NISN & Kontak</th>
-                        <th className="py-3.5 px-4">Password Saat Ini</th>
+                        {/* <th className="py-3.5 px-4">Password Saat Ini</th> */}
                         <th className="py-3.5 px-4 text-center">Status Akun</th>
                         <th className="py-3.5 px-5 text-right">Tindakan Admin</th>
                     </tr>
@@ -89,7 +89,7 @@ export function SiswaTable({
                                     </td>
 
                                     {/* Password with Reveal Button */}
-                                    <td className="py-3.5 px-4">
+                                    {/* <td className="py-3.5 px-4">
                                         <div className="flex items-center gap-2">
                                             <span className={`text-xs px-2 py-1 font-mono ${isRevealed ? 'text-blue-600 font-semibold' : 'text-slate-600'}`}>
                                                 {isRevealed ? (student.password && student.password !== '••••••••' ? student.password : 'siswa123') : '••••••••'}
@@ -107,7 +107,7 @@ export function SiswaTable({
                                                 )}
                                             </button>
                                         </div>
-                                    </td>
+                                    </td> */}
 
                                     {/* Status */}
                                     <td className="py-3.5 px-4 text-center">
