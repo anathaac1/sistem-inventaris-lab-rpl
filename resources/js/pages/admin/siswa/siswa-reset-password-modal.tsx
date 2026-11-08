@@ -32,7 +32,6 @@ export function SiswaResetPasswordModal({
 
                 {student && (
                     <form onSubmit={onSubmit} className="space-y-4">
-                        {/* Student Target Summary */}
                         <div className="p-3 rounded bg-slate-50 border border-slate-200 text-xs flex items-center gap-3">
                             <div className="w-9 h-9 rounded bg-slate-900 text-white font-bold flex items-center justify-center shrink-0">
                                 {student.avatar}
@@ -45,7 +44,6 @@ export function SiswaResetPasswordModal({
                             </div>
                         </div>
 
-                        {/* New Password Input */}
                         <div className="space-y-1.5 border border-slate-200 rounded p-3.5 bg-slate-50/50">
                             <label className="text-xs font-semibold text-slate-700 block">
                                 Password Baru
@@ -60,7 +58,6 @@ export function SiswaResetPasswordModal({
                                 className="w-full px-3 py-2 rounded border border-slate-300 bg-white text-xs text-slate-900 focus:outline-none focus:border-[#0256D0] focus:ring-1 focus:ring-[#0256D0]"
                             />
 
-                            {/* Quick Generator Button */}
                             <button
                                 type="button"
                                 onClick={onGenerateRandom}
@@ -70,7 +67,6 @@ export function SiswaResetPasswordModal({
                             </button>
                         </div>
 
-                        {/* Actions */}
                         <div className="flex items-center justify-end gap-2 pt-1">
                             <Button
                                 type="button"

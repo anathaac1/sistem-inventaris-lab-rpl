@@ -47,9 +47,6 @@ export function SiswaFilterBar({
 
                 </span>
                 <div className="flex items-center gap-3">
-                    {/* <span className="text-xs text-slate-500 hidden sm:inline">
-                        Total: <strong>{totalAccounts} Akun</strong>
-                    </span> */}
                     <button
                         type="button"
                         onClick={onOpenCreateModal}
@@ -61,9 +58,7 @@ export function SiswaFilterBar({
                 </div>
             </div>
 
-            {/* 3-Column Grid Form */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-3.5 text-xs">
-                {/* Row 1 - Col 1: Nama Pengguna / Siswa (Input biasa) */}
                 <div className="flex items-center gap-3">
                     <label className="w-32 shrink-0 font-medium text-slate-600 text-[11px] sm:text-xs">
                         Nama Lengkap
@@ -78,7 +73,6 @@ export function SiswaFilterBar({
                     />
                 </div>
 
-                {/* Row 1 - Col 2: Peran Akun */}
                 <div className="flex items-center gap-3">
                     <label className="w-32 shrink-0 font-medium text-slate-600 text-[11px] sm:text-xs">
                         Peran Akun
@@ -109,7 +103,6 @@ export function SiswaFilterBar({
                     </div>
                 </div>
 
-                {/* Row 1 - Col 3: Kelas */}
                 <div className="flex items-center gap-3">
                     <label className="w-32 shrink-0 font-medium text-slate-600 text-[11px] sm:text-xs">
                         Kelas Siswa
@@ -143,7 +136,6 @@ export function SiswaFilterBar({
                     </div>
                 </div>
 
-                {/* Row 2 - Col 1: Username Login (Input biasa) */}
                 <div className="flex items-center gap-3">
                     <label className="w-32 shrink-0 font-medium text-slate-600 text-[11px] sm:text-xs">
                         Username
@@ -158,7 +150,6 @@ export function SiswaFilterBar({
                     />
                 </div>
 
-                {/* Row 2 - Col 2: NISN (Input biasa) */}
                 <div className="flex items-center gap-3">
                     <label className="w-32 shrink-0 font-medium text-slate-600 text-[11px] sm:text-xs">
                         NISN
@@ -173,11 +164,9 @@ export function SiswaFilterBar({
                     />
                 </div>
 
-                {/* Row 2 - Col 3: Spacer */}
                 <div className="hidden md:block"></div>
             </div>
 
-            {/* Filter Action Buttons */}
             <div className="flex items-center justify-end gap-2.5 mt-4 pt-3 border-t border-slate-100">
                 <button
                     type="button"

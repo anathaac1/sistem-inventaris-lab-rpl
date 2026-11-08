@@ -13,7 +13,6 @@ export function HeroOperationalBanner({
 }: HeroOperationalBannerProps) {
     return (
         <div className="relative rounded-xl bg-gradient-to-r from-[#0256D0] via-[#0448AB] to-[#0A1C38] text-white p-6 sm:p-7 shadow-xs overflow-hidden">
-            {/* Tech radial watermark */}
             <div
                 className="absolute inset-0 opacity-10 pointer-events-none"
                 style={{
@@ -36,7 +35,6 @@ export function HeroOperationalBanner({
                     </p>
                 </div>
 
-                {/* Percentage Gauge Block */}
                 <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 sm:p-5 text-center min-w-[160px] shrink-0 shadow-xs">
                     <span className="text-[11px] font-bold text-blue-200 uppercase tracking-wider block">
                         Tingkat Kesiapan

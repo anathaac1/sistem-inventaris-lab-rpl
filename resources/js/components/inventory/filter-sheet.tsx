@@ -39,7 +39,6 @@ export function FilterSheet({
                 </DialogHeader>
 
                 <div className="py-4 space-y-6">
-                    {/* Category Filter */}
                     <div>
                         <label className="block text-sm font-semibold text-zinc-800 mb-3">
                             Kategori
@@ -65,7 +64,6 @@ export function FilterSheet({
                         </div>
                     </div>
 
-                    {/* Status Filter */}
                     <div>
                         <label className="block text-sm font-semibold text-zinc-800 mb-3">
                             Status

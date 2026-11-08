@@ -35,7 +35,6 @@ export function ProfilePasswordModal({
             <DialogContent className="max-w-sm rounded-2xl bg-white p-5 border border-slate-200 shadow-xl">
                 <DialogHeader>
                     <DialogTitle className="text-base font-bold text-slate-900 flex items-center gap-2">
-                        {/* <Lock className="w-4 h-4 text-[#0256D0]" /> */}
                         <span>Ganti Kata Sandi Admin</span>
                     </DialogTitle>
                 </DialogHeader>

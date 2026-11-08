@@ -84,7 +84,6 @@ export default function Alat({ initialItems = [], filters }: AlatProps) {
             <Head title="Semua Alat - Sistem Inventory Lab RPL" />
 
             <div className="space-y-4">
-                {/* Search Bar + Filter Button */}
                 <AlatSearchBar
                     searchQuery={searchQuery}
                     onSearchChange={setSearchQuery}
@@ -92,21 +91,18 @@ export default function Alat({ initialItems = [], filters }: AlatProps) {
                     onOpenFilter={() => setFilterSheetOpen(true)}
                 />
 
-                {/* Horizontal Category Chips */}
                 <AlatCategoryChips
                     categories={CATEGORIES}
                     selectedCategory={selectedCategory}
                     onSelectCategory={setSelectedCategory}
                 />
 
-                {/* Grid of Tools */}
                 <AlatGrid
                     items={filteredItems}
                     onOpenDetail={handleOpenDetail}
                 />
             </div>
 
-            {/* Filter Bottom Sheet */}
             <FilterSheet
                 isOpen={filterSheetOpen}
                 onClose={() => setFilterSheetOpen(false)}
@@ -121,7 +117,6 @@ export default function Alat({ initialItems = [], filters }: AlatProps) {
                 }}
             />
 
-            {/* Item Detail Modal for Pinjam */}
             {selectedItem && (
                 <ItemDetailModal
                     item={selectedItem}

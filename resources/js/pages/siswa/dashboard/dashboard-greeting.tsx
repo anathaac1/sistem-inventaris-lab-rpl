@@ -22,7 +22,6 @@ export function DashboardGreeting({
                 </p>
             </div>
 
-            {/* Date and Time Terakhir Login */}
             <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
                 <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-slate-400" />
 

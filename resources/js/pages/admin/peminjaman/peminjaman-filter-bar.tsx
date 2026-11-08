@@ -53,9 +53,7 @@ export function PeminjamanFilterBar({
 
     return (
         <div className="p-4 sm:p-5 border-b border-slate-200 bg-white">
-            {/* 3-Column Grid Form */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-3.5 text-xs">
-                {/* Row 1 - Col 1: Nama Peminjam (Input biasa) */}
                 <div className="flex items-center gap-3">
                     <label className="w-32 shrink-0 font-medium text-slate-600 text-[11px] sm:text-xs">
                         Nama Siswa
@@ -70,7 +68,6 @@ export function PeminjamanFilterBar({
                     />
                 </div>
 
-                {/* Row 1 - Col 2: Kelas */}
                 <div className="flex items-center gap-3">
                     <label className="w-32 shrink-0 font-medium text-slate-600 text-[11px] sm:text-xs">
                         Kelas
@@ -103,7 +100,6 @@ export function PeminjamanFilterBar({
                     </div>
                 </div>
 
-                {/* Row 1 - Col 3: Status Log */}
                 <div className="flex items-center gap-3">
                     <label className="w-32 shrink-0 font-medium text-slate-600 text-[11px] sm:text-xs">
                         Status Pinjam
@@ -134,7 +130,6 @@ export function PeminjamanFilterBar({
                     </div>
                 </div>
 
-                {/* Row 2 - Col 1: Nama Perangkat Lab (Input biasa) */}
                 <div className="flex items-center gap-3">
                     <label className="w-32 shrink-0 font-medium text-slate-600 text-[11px] sm:text-xs">
                         Perangkat Lab
@@ -149,7 +144,6 @@ export function PeminjamanFilterBar({
                     />
                 </div>
 
-                {/* Row 2 - Col 2: Kode Perangkat (Input biasa) */}
                 <div className="flex items-center gap-3">
                     <label className="w-32 shrink-0 font-medium text-slate-600 text-[11px] sm:text-xs">
                         Kode Alat
@@ -164,11 +158,9 @@ export function PeminjamanFilterBar({
                     />
                 </div>
 
-                {/* Row 2 - Col 3: Empty spacer for symmetry */}
                 <div className="hidden md:block"></div>
             </div>
 
-            {/* Filter Action Buttons */}
             <div className="flex items-center justify-end gap-2.5 mt-4 pt-3 border-t border-slate-100">
                 <button
                     type="button"

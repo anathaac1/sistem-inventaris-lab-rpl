@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { router } from '@inertiajs/react';
-import { Lock, ChevronRight, School, BookOpen, Edit3, Mail, Phone, Hash } from 'lucide-react';
+import { School, BookOpen, Edit3, Mail, Phone, Hash } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { ProfileStudentCard } from './profile-student-card';
 import { ProfilePasswordModal } from './profile-password-modal';
 import { ProfileEditModal, type StudentProfileFormData } from './profile-edit-modal';
 import { USER_PROFILE } from '@/data/inventory-data';
 import { toast } from 'sonner';
-import { ChevronLeft } from 'lucide-react';
 
 interface ProfileModalProps {
     isOpen: boolean;
@@ -100,13 +99,6 @@ export function ProfileModal({ isOpen, onClose, session, user }: ProfileModalPro
                     <DialogHeader className="pb-3 border-b border-slate-100">
                         <DialogTitle className="text-base font-bold text-slate-900 flex items-center justify-between">
                             <div className="flex items-center gap-2">
-                                {/* <button
-                                    type="button"
-                                    onClick={onClose}
-                                    className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
-                                >
-                                    <ChevronLeft className="w-4 h-4" />
-                                </button> */}
                                 <span>Profil Siswa</span>
                             </div>
                             <button
@@ -128,7 +120,6 @@ export function ProfileModal({ isOpen, onClose, session, user }: ProfileModalPro
                             avatarInitials={avatarInitials}
                         />
 
-                        {/* Detail Info Card */}
                         <div className="bg-slate-50/80 rounded p-4 border border-slate-200/80 space-y-3">
                             <h3 className="text-xs font-bold text-slate-700 uppercase tracking-wider">
                                 Informasi Akademik & Akun
@@ -170,53 +161,6 @@ export function ProfileModal({ isOpen, onClose, session, user }: ProfileModalPro
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        {/* Action Buttons */}
-                        <div className="bg-white border border-slate-200/90 rounded-xl divide-y divide-slate-100 shadow-2xs overflow-hidden">
-                            {/* Edit Profil Siswa */}
-                            {/* <button
-                                type="button"
-                                onClick={() => setEditModalOpen(true)}
-                                className="w-full flex items-center justify-between p-3.5 hover:bg-slate-50 transition-colors text-left group cursor-pointer"
-                            > */}
-                                {/* <div className="flex items-center gap-3"> */}
-                                    {/* <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#0256D0] flex items-center justify-center shrink-0 group-hover:bg-[#0256D0] group-hover:text-white transition-colors">
-                                        <Edit3 className="w-4 h-4" />
-                                    </div> */}
-                                    {/* <div>
-                                        <p className="text-xs font-semibold text-slate-900 group-hover:text-[#0256D0] transition-colors">
-                                            Edit Profil Siswa
-                                        </p>
-                                        <p className="text-[11px] text-slate-500">
-                                            Ubah nama, email, kelas, NISN, dan nomor kontak
-                                        </p>
-                                    </div> */}
-                                {/* </div> */}
-                                {/* <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-slate-600" /> */}
-                            {/* </button> */}
-
-                            {/* Ubah Kata Sandi */}
-                            {/* <button
-                                type="button"
-                                onClick={() => setPasswordModalOpen(true)}
-                                className="w-full flex items-center justify-between p-3.5 hover:bg-slate-50 transition-colors text-left group cursor-pointer"
-                            >
-                                <div className="flex items-center gap-3">
-                                    <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#0256D0] flex items-center justify-center shrink-0 group-hover:bg-[#0256D0] group-hover:text-white transition-colors">
-                                        <Lock className="w-4 h-4" />
-                                    </div>
-                                    <div>
-                                        <p className="text-xs font-semibold text-slate-900 group-hover:text-[#0256D0] transition-colors">
-                                            Ubah Kata Sandi
-                                        </p>
-                                        <p className="text-[11px] text-slate-500">
-                                            Perbarui kata sandi akun siswa Anda
-                                        </p>
-                                    </div>
-                                </div>
-                                <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-slate-600" />
-                            </button> */}
                         </div>
                     </div>
                 </DialogContent>

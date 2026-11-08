@@ -58,7 +58,6 @@ export function ItemDetailModal({ item, open, isOpen, onClose, onLoanSuccess }: 
 
                 {!isBorrowing ? (
                     <div className="p-5 space-y-4">
-                        {/* Image */}
                         <div className="rounded-lg bg-zinc-50 p-3 flex flex-col items-center justify-center border border-zinc-100 overflow-hidden relative group">
                             {item.imageUrl ? (
                                 <>
@@ -82,7 +81,6 @@ export function ItemDetailModal({ item, open, isOpen, onClose, onLoanSuccess }: 
                             )}
                         </div>
 
-                        {/* Title & Status */}
                         <div className="flex items-center justify-between gap-2">
                             <div>
                                 <span className="text-[11px] font-semibold text-blue-600 uppercase">
@@ -98,7 +96,6 @@ export function ItemDetailModal({ item, open, isOpen, onClose, onLoanSuccess }: 
                             </span>
                         </div>
 
-                        {/* Details */}
                         <div className="grid grid-cols-2 gap-2 text-xs">
                             <div className="p-2.5 rounded bg-zinc-50 border border-zinc-100">
                                 <span className="text-zinc-500">Jumlah Tersedia</span>
@@ -114,7 +111,6 @@ export function ItemDetailModal({ item, open, isOpen, onClose, onLoanSuccess }: 
                             </div>
                         </div>
 
-                        {/* Description */}
                         <div>
                             <h3 className="text-xs font-bold text-zinc-800 mb-1">
                                 Deskripsi
@@ -124,7 +120,6 @@ export function ItemDetailModal({ item, open, isOpen, onClose, onLoanSuccess }: 
                             </p>
                         </div>
 
-                        {/* Specifications */}
                         <div>
                             <h3 className="text-xs font-bold text-zinc-800 mb-1">
                                 Spesifikasi
@@ -139,19 +134,16 @@ export function ItemDetailModal({ item, open, isOpen, onClose, onLoanSuccess }: 
                             </div>
                         </div>
 
-                        {/* Bottom Action */}
                         <div className="pt-1">
                             <Button
                                 onClick={() => setIsBorrowing(true)}
                                 className="w-full py-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center justify-center gap-1.5"
                             >
                                 <span>Pinjam Sekarang</span>
-                                {/* <ArrowRight className="w-3.5 h-3.5" /> */}
                             </Button>
                         </div>
                     </div>
                 ) : (
-                    /* Loan Submission Form */
                     <form onSubmit={handleConfirmBorrow} className="p-5 space-y-3 text-xs">
                         <div className="flex items-center gap-2 p-2.5 bg-blue-50 rounded border border-blue-100 text-blue-800">
                             <Info className="w-3.5 h-3.5 shrink-0" />
@@ -225,7 +217,6 @@ export function ItemDetailModal({ item, open, isOpen, onClose, onLoanSuccess }: 
             </DialogContent>
         </Dialog>
 
-        {/* Modal Zoom Gambar Penuh */}
         {item && item.imageUrl && (
             <Dialog open={isImageZoomed} onOpenChange={setIsImageZoomed}>
                 <DialogContent className="max-w-2xl w-full p-2 bg-white/95 backdrop-blur-md rounded-2xl border border-zinc-200 shadow-2xl overflow-hidden">

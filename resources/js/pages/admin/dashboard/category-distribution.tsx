@@ -54,7 +54,6 @@ export function CategoryDistribution({
                                 </div>
                             </div>
 
-                            {/* Animated Category Progress Bar */}
                             <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
                                 <div
                                     className={`h-full ${cat.barColor} rounded-full transition-all duration-1000 ease-out`}

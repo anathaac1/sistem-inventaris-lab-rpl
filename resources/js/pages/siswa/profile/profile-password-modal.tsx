@@ -39,7 +39,7 @@ export function ProfilePasswordModal({
                     </DialogTitle>
                 </DialogHeader>
 
-                {/* <form onSubmit={onSubmit} className="space-y-4 mt-2">
+                <form onSubmit={onSubmit} className="space-y-4 mt-2">
                     <div>
                         <label className="block text-xs font-semibold text-zinc-700 mb-1">
                             Kata Sandi Lama
@@ -102,7 +102,7 @@ export function ProfilePasswordModal({
                             Simpan Perubahan
                         </Button>
                     </div>
-                </form> */}
+                </form>
             </DialogContent>
         </Dialog>
     );

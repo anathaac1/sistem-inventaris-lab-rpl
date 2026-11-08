@@ -1,4 +1,4 @@
-import { CheckCircle2, Clock } from 'lucide-react';
+import { Clock } from 'lucide-react';
 import { ItemIllustration } from '@/components/inventory/item-illustration';
 import type { LoanItem } from '@/data/inventory-data';
 
@@ -44,7 +44,6 @@ export function PeminjamanHistoryList({ loans }: PeminjamanHistoryListProps) {
                                         {loan.code}
                                     </span>
                                     <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold flex items-center gap-1">
-                                        {/* <CheckCircle2 className="w-3 h-3" /> */}
                                         Dikembalikan
                                     </span>
                                 </div>

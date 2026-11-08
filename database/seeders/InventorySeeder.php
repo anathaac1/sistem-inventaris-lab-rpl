@@ -440,7 +440,6 @@ class InventorySeeder extends Seeder
             }
         }
 
-        // Additional history loans
         $siswa4 = $createdUsers['siswa4'] ?? null;
         if ($siswa4 && isset($createdAlats['PR-006'])) {
             Peminjaman::updateOrCreate(

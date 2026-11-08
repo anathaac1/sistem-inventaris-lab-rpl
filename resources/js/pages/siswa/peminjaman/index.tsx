@@ -38,7 +38,6 @@ export default function Peminjaman({ initialActiveLoans = [], initialLoanHistory
             <Head title="Peminjaman Saya - Sistem Inventory Lab RPL" />
 
             <div className="space-y-4">
-                {/* Tabs Switcher: "Aktif" vs "Riwayat" */}
                 <PeminjamanTabs
                     activeTab={activeTab}
                     onTabChange={setActiveTab}
@@ -46,7 +45,6 @@ export default function Peminjaman({ initialActiveLoans = [], initialLoanHistory
                     historyCount={loanHistory.length}
                 />
 
-                {/* Tab Content */}
                 {activeTab === 'aktif' ? (
                     <PeminjamanActiveList
                         loans={activeLoans}

@@ -20,7 +20,6 @@ export function AlatDetailModal({ item, onClose, onEdit }: AlatDetailModalProps)
                 <DialogContent className="max-w-md w-full p-0 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-2xl">
                     {item && (
                         <div>
-                            {/* Header Banner */}
                             <div className="bg-gradient-to-r from-[#0256D0] to-[#0A1C38] text-white p-5 flex items-center justify-between">
                                 <div className="flex items-center gap-3.5">
                                     <div
@@ -62,33 +61,10 @@ export function AlatDetailModal({ item, onClose, onEdit }: AlatDetailModalProps)
                                     onClick={onClose}
                                     className="p-1 rounded-lg text-white/70 hover:text-white hover:bg-white/10"
                                 >
-                                    {/* <X className="w-4 h-4" /> */}
                                 </button>
                             </div>
 
-                            {/* Body Details */}
                             <div className="p-5 space-y-4 max-h-[70vh] overflow-y-auto text-xs">
-                                {/* Large Image Banner if Available */}
-                                {/* {item.imageUrl && (
-                                    <div className="rounded-lg border border-slate-200 overflow-hidden bg-slate-50 relative group">
-                                        <img
-                                            src={item.imageUrl}
-                                            alt={item.name}
-                                            onClick={() => setIsImageZoomed(true)}
-                                            className="w-full h-44 object-contain bg-white cursor-pointer hover:opacity-95 transition-opacity"
-                                        />
-                                        <button
-                                            type="button"
-                                            onClick={() => setIsImageZoomed(true)}
-                                            className="absolute bottom-2 right-2 px-2.5 py-1 bg-black/70 hover:bg-black/90 text-white rounded text-[11px] font-medium flex items-center gap-1.5 backdrop-blur-xs transition-colors cursor-pointer"
-                                        >
-                                            <ZoomIn className="w-3.5 h-3.5" />
-                                            <span>Lihat Ukuran Penuh</span>
-                                        </button>
-                                    </div>
-                                )} */}
-
-                                {/* Stock & Visibility Status Grid */}
                                 <div className="grid grid-cols-2 gap-3">
                                 <div className="p-3 rounded bg-slate-50 border border-slate-200">
                                     <span className="text-[11px] text-slate-500 block mb-1">Ketersediaan Unit Lab</span>
@@ -114,19 +90,16 @@ export function AlatDetailModal({ item, onClose, onEdit }: AlatDetailModalProps)
                                     <span className="text-[11px] text-slate-500 block mb-1">Status</span>
                                     {item.isVisibleToStudents !== false ? (
                                         <span className="inline-flex items-center gap-1.5 text-emerald-700 font-bold text-xs mt-1">
-                                            {/* <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> */}
                                             Aktif
                                         </span>
                                     ) : (
                                         <span className="inline-flex items-center gap-1.5 text-slate-500 font-medium text-xs mt-1">
-                                            {/* <span className="w-1.5 h-1.5 rounded-full bg-slate-400" /> */}
                                             Tidak Aktif
                                         </span>
                                     )}
                                 </div>
                             </div>
 
-                            {/* Description */}
                             <div className="space-y-1">
                                 <span className="font-bold text-slate-900 flex items-center gap-1.5">
                                     <Info className="w-3.5 h-3.5 text-[#0256D0]" />
@@ -137,7 +110,6 @@ export function AlatDetailModal({ item, onClose, onEdit }: AlatDetailModalProps)
                                 </p>
                             </div>
 
-                            {/* Full Specifications Table */}
                             <div className="space-y-2">
                                 <span className="font-bold text-slate-900 block">
                                     Spesifikasi Teknis & Rincian Lab
@@ -159,22 +131,12 @@ export function AlatDetailModal({ item, onClose, onEdit }: AlatDetailModalProps)
                             </div>
                         </div>
 
-                        {/* Footer Actions */}
                         <div className="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
-                            {/* <Button
-                                type="button"
-                                variant="outline"
-                                onClick={onClose}
-                                className="h-9 px-4 rounded text-xs font-semibold"
-                            >
-                                Tutup
-                            </Button> */}
                             <Button
                                 type="button"
                                 onClick={() => onEdit(item)}
                                 className="h-9 px-4 ml-auto rounded bg-[#0256D0] hover:bg-[#0243a4] text-white text-xs font-semibold flex items-center gap-1.5 shadow-xs cursor-pointer"
                             >
-                                {/* <Edit2 className="w-3.5 h-3.5" /> */}
                                 <span>Ubah Data Alat Ini</span>
                             </Button>
                         </div>
@@ -183,7 +145,6 @@ export function AlatDetailModal({ item, onClose, onEdit }: AlatDetailModalProps)
             </DialogContent>
         </Dialog>
 
-        {/* Modal Zoom Gambar Penuh */}
         {item && item.imageUrl && (
             <Dialog open={isImageZoomed} onOpenChange={setIsImageZoomed}>
                 <DialogContent className="max-w-2xl w-full p-2 bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200 shadow-2xl overflow-hidden">

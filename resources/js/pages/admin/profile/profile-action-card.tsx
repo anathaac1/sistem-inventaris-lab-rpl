@@ -9,7 +9,6 @@ interface ProfileActionCardProps {
 export function ProfileActionCard({ onOpenEditModal, onOpenPasswordModal, onLogout }: ProfileActionCardProps) {
     return (
         <div className="bg-white border border-slate-200/90 rounded-xl divide-y divide-slate-100 shadow-2xs overflow-hidden">
-            {/* Edit Profil Admin */}
             <button
                 type="button"
                 onClick={onOpenEditModal}
@@ -31,7 +30,6 @@ export function ProfileActionCard({ onOpenEditModal, onOpenPasswordModal, onLogo
                 <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-slate-600" />
             </button>
 
-            {/* Ganti Kata Sandi */}
             <button
                 type="button"
                 onClick={onOpenPasswordModal}
@@ -53,7 +51,6 @@ export function ProfileActionCard({ onOpenEditModal, onOpenPasswordModal, onLogo
                 <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-slate-600" />
             </button>
 
-            {/* Tombol Keluar (Logout) */}
             <button
                 type="button"
                 onClick={onLogout}

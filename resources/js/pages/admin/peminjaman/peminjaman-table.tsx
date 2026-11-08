@@ -32,7 +32,6 @@ export function PeminjamanTable({ loans, onReturnItem }: PeminjamanTableProps) {
                             const isActive = loan.status === 'Sedang Dipinjam';
                             return (
                                 <tr key={loan.id} className="hover:bg-slate-50/70 transition-colors">
-                                    {/* Siswa */}
                                     <td className="py-3.5 px-5">
                                         <div className="flex items-center gap-3">
                                             <div className="w-8 h-8 bg-blue-50 text-[#0256D0] font-bold text-xs flex items-center justify-center shrink-0 border border-blue-200/60 shadow-2xs">
@@ -49,7 +48,6 @@ export function PeminjamanTable({ loans, onReturnItem }: PeminjamanTableProps) {
                                         </div>
                                     </td>
 
-                                    {/* Alat */}
                                     <td className="py-3.5 px-4">
                                         <div>
                                             <span className="font-semibold text-slate-900 block">
@@ -61,7 +59,6 @@ export function PeminjamanTable({ loans, onReturnItem }: PeminjamanTableProps) {
                                         </div>
                                     </td>
 
-                                    {/* Periode */}
                                     <td className="py-3.5 px-4">
                                         <div className="text-[11px] space-y-0.5">
                                             <p className="text-slate-600 flex items-center gap-1">
@@ -80,29 +77,24 @@ export function PeminjamanTable({ loans, onReturnItem }: PeminjamanTableProps) {
                                         </div>
                                     </td>
 
-                                    {/* Keperluan */}
                                     <td className="py-3.5 px-4">
                                         <p className="text-[11px] text-slate-600 max-w-xs truncate">
                                             {loan.notes || 'Praktikum Reguler Lab'}
                                         </p>
                                     </td>
 
-                                    {/* Status */}
                                     <td className="py-3.5 px-4 text-center">
                                         {isActive ? (
                                             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] font-semibold bg-amber-50 text-amber-800 border border-amber-200">
-                                                {/* <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" /> */}
                                                 <span>Sedang Dipinjam</span>
                                             </span>
                                         ) : (
                                             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
-                                                {/* <span className="w-1.5 h-1.5 bg-emerald-500" /> */}
                                                 <span>Dikembalikan</span>
                                             </span>
                                         )}
                                     </td>
 
-                                    {/* Actions */}
                                     <td className="py-3.5 px-5 text-right">
                                         {isActive ? (
                                             <button

@@ -24,7 +24,6 @@ export function SiswaTable({
                         <th className="py-3.5 px-5">Pengguna & Peran</th>
                         <th className="py-3.5 px-4">Username Login</th>
                         <th className="py-3.5 px-4">NISN & Kontak</th>
-                        {/* <th className="py-3.5 px-4">Password Saat Ini</th> */}
                         <th className="py-3.5 px-4 text-center">Status Akun</th>
                         <th className="py-3.5 px-5 text-right">Tindakan Admin</th>
                     </tr>
@@ -42,7 +41,6 @@ export function SiswaTable({
                             const isAdmin = student.role === 'admin';
                             return (
                                 <tr key={student.id} className="hover:bg-slate-50/70 transition-colors">
-                                    {/* Pengguna & Kelas/Jabatan */}
                                     <td className="py-3.5 px-5">
                                         <div className="flex items-center gap-3">
                                             <div className={`w-8 h-8 rounded font-bold text-xs flex items-center justify-center shrink-0 border shadow-2xs ${
@@ -67,7 +65,6 @@ export function SiswaTable({
                                         </div>
                                     </td>
 
-                                    {/* Username */}
                                     <td className="py-3.5 px-4 font-semibold text-slate-800">
                                         <div className="flex items-center gap-1.5">
                                             <span>{student.username}</span>
@@ -82,49 +79,23 @@ export function SiswaTable({
                                         </div>
                                     </td>
 
-                                    {/* NISN & Phone */}
                                     <td className="py-3.5 px-4 text-slate-500 text-[11px] space-y-0.5">
                                         <p>NISN: {student.nisn || '-'}</p>
                                         <p>{student.email}</p>
                                     </td>
 
-                                    {/* Password with Reveal Button */}
-                                    {/* <td className="py-3.5 px-4">
-                                        <div className="flex items-center gap-2">
-                                            <span className={`text-xs px-2 py-1 font-mono ${isRevealed ? 'text-blue-600 font-semibold' : 'text-slate-600'}`}>
-                                                {isRevealed ? (student.password && student.password !== '••••••••' ? student.password : 'siswa123') : '••••••••'}
-                                            </span>
-                                            <button
-                                                type="button"
-                                                onClick={() => onTogglePasswordReveal(student.username)}
-                                                className="text-slate-400 hover:text-slate-700 p-1 rounded cursor-pointer"
-                                                title={isRevealed ? 'Sembunyikan' : 'Lihat password'}
-                                            >
-                                                {isRevealed ? (
-                                                    <Eye className="w-3.5 h-3.5" />
-                                                ) : (
-                                                    <EyeOff className="w-3.5 h-3.5" />
-                                                )}
-                                            </button>
-                                        </div>
-                                    </td> */}
-
-                                    {/* Status */}
                                     <td className="py-3.5 px-4 text-center">
                                         <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
-                                            {/* <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> */}
                                             <span>Aktif</span>
                                         </span>
                                     </td>
 
-                                    {/* Action */}
                                     <td className="py-3.5 px-5 text-right">
                                         <button
                                             type="button"
                                             onClick={() => onOpenResetModal(student)}
                                             className="h-8 px-3 rounded bg-blue-50/80 hover:bg-blue-100 text-[#0256D0] border border-blue-200/80 text-xs font-bold flex items-center gap-1.5 ml-auto transition-all cursor-pointer shadow-2xs group"
                                         >
-                                            {/* <KeyRound className="w-3.5 h-3.5 text-[#0256D0] group-hover:scale-110 transition-transform" /> */}
                                             <span>Beri Password Baru</span>
                                         </button>
                                     </td>

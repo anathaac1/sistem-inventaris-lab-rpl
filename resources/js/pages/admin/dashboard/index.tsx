@@ -6,13 +6,11 @@ import {
     type InventoryItem,
     type LoanItem
 } from '@/data/inventory-data';
-import { HeroOperationalBanner } from './hero-operational-banner';
 import { DimensionMetrics, type DimensionTab } from './dimension-metrics';
 import { ActiveLoansMonitor } from './active-loans-monitor';
 import { CategoryDistribution, type CategoryStatItem } from './category-distribution';
 import { ClassDistribution, type ClassStatItem } from './class-distribution';
 
-// Smooth counter animation hook
 function useAnimatedCounter(target: number, duration: number = 1000) {
     const [value, setValue] = useState(0);
 
@@ -56,7 +54,6 @@ export default function AdminDashboard({ initialItems = [], initialLoans = [], i
         return () => clearTimeout(timer);
     }, []);
 
-    // Summary calculations
     const totalItems = items.length;
     const totalPhysicalUnits = items.reduce((sum, item) => sum + (item.total || 0), 0);
     const totalAvailableStock = items.reduce((sum, item) => sum + (item.stock || 0), 0);
@@ -67,7 +64,6 @@ export default function AdminDashboard({ initialItems = [], initialLoans = [], i
         ? Math.round((totalAvailableStock / totalPhysicalUnits) * 100)
         : 100;
 
-    // Animated values
     const animatedAvailableStock = useAnimatedCounter(totalAvailableStock, 1100);
     const animatedTotalUnits = useAnimatedCounter(totalPhysicalUnits, 1200);
     const animatedPercentage = useAnimatedCounter(availabilityPercentage, 1000);
@@ -75,7 +71,6 @@ export default function AdminDashboard({ initialItems = [], initialLoans = [], i
     const animatedActiveLoans = useAnimatedCounter(activeLoans.length, 800);
     const animatedStudentCount = useAnimatedCounter(studentCount, 800);
 
-    // Category breakdown
     const categoryStats: CategoryStatItem[] = [
         {
             name: 'Laptop & Komputer',
@@ -107,7 +102,6 @@ export default function AdminDashboard({ initialItems = [], initialLoans = [], i
         }
     ];
 
-    // Class loan breakdown
     const classStats: ClassStatItem[] = [
         { name: 'X RPL A', active: activeLoans.filter((l) => l.borrowerClass.includes('X RPL A')).length },
         { name: 'X RPL B', active: activeLoans.filter((l) => l.borrowerClass.includes('X RPL B')).length },
@@ -122,14 +116,6 @@ export default function AdminDashboard({ initialItems = [], initialLoans = [], i
             <Head title="Admin CMS - Ringkasan & Metrik Lab" />
 
             <div className="space-y-6">
-                {/* 1. Real-Time Operational Hero Banner */}
-                {/* <HeroOperationalBanner
-                    availableStock={animatedAvailableStock}
-                    totalUnits={animatedTotalUnits}
-                    percentage={animatedPercentage}
-                /> */}
-
-                {/* 2. Interactive Dimension Metric Bar */}
                 <DimensionMetrics
                     activeTab={activeTab}
                     onTabChange={setActiveTab}
@@ -140,12 +126,9 @@ export default function AdminDashboard({ initialItems = [], initialLoans = [], i
                     studentCount={animatedStudentCount}
                 />
 
-                {/* 3. Monitoring & Analytics Workspace */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-                    {/* Left 2 Cols: Live Loan Circulation Table */}
                     <ActiveLoansMonitor activeLoans={activeLoans} />
 
-                    {/* Right 1 Col: Visual Analytics Breakdown */}
                     <div className="space-y-6">
                         <CategoryDistribution
                             categoryStats={categoryStats}
