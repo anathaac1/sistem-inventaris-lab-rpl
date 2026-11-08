@@ -19,7 +19,7 @@ export interface SessionToken {
     name: string;
     class: string;
     createdAt: number;
-    expiresAt: number; // 1 hour from creation (3600 * 1000 ms)
+    expiresAt: number;
 }
 
 export const RPL_CLASSES = [
@@ -35,7 +35,7 @@ export type RplClass = (typeof RPL_CLASSES)[number];
 
 const ACCOUNTS_STORAGE_KEY = 'lab_inventory_accounts_v4';
 const SESSION_STORAGE_KEY = 'lab_inventory_session_token_v1';
-export const TOKEN_DURATION_MS = 60 * 60 * 1000; // 1 Hour (3600 seconds)
+export const TOKEN_DURATION_MS = 60 * 60 * 1000;
 
 export const DEFAULT_ACCOUNTS: UserAccount[] = [
     {
@@ -123,7 +123,6 @@ export const DEFAULT_ACCOUNTS: UserAccount[] = [
     }
 ];
 
-// Helper to normalize class naming to RPL A / RPL B
 function normalizeClass(cls?: string): string {
     if (!cls) return 'X RPL A';
     return cls
@@ -131,7 +130,6 @@ function normalizeClass(cls?: string): string {
         .replace(/RPL\s*2\b/gi, 'RPL B');
 }
 
-// Get list of all accounts (with persisted password changes)
 export function getStoredAccounts(): UserAccount[] {
     if (typeof window === 'undefined') return DEFAULT_ACCOUNTS;
     try {
@@ -153,7 +151,6 @@ export function getStoredAccounts(): UserAccount[] {
     }
 }
 
-// Save accounts
 export function saveStoredAccounts(accounts: UserAccount[]): void {
     if (typeof window === 'undefined') return;
     try {
@@ -164,7 +161,6 @@ export function saveStoredAccounts(accounts: UserAccount[]): void {
     }
 }
 
-// Admin resets student password
 export function updateStudentPassword(username: string, newPassword: string): boolean {
     const accounts = getStoredAccounts();
     const targetIdx = accounts.findIndex(
@@ -181,7 +177,6 @@ export function updateStudentPassword(username: string, newPassword: string): bo
     return true;
 }
 
-// Admin creates a new user account (siswa or admin)
 export function createUserAccount(newUserData: {
     username: string;
     name: string;
@@ -246,7 +241,6 @@ export function createUserAccount(newUserData: {
     };
 }
 
-// Generate token and start session (1 hour validity)
 export function createSessionToken(user: UserAccount): SessionToken {
     const now = Date.now();
     const tokenStr = `tk_${user.username}_${Math.random().toString(36).substring(2, 10)}_${now}`;
@@ -268,7 +262,6 @@ export function createSessionToken(user: UserAccount): SessionToken {
     return session;
 }
 
-// Get current active session, verifying 1-hour expiration
 export function getActiveSession(): SessionToken | null {
     if (typeof window === 'undefined') return null;
     try {
@@ -278,9 +271,7 @@ export function getActiveSession(): SessionToken | null {
         const session: SessionToken = JSON.parse(data);
         const now = Date.now();
 
-        // 1-Hour Token Expiration Check
         if (now >= session.expiresAt) {
-            // Expired! Clear session
             localStorage.removeItem(SESSION_STORAGE_KEY);
             window.dispatchEvent(new CustomEvent('session_token_expired'));
             return null;
@@ -292,7 +283,6 @@ export function getActiveSession(): SessionToken | null {
     }
 }
 
-// Log out and clear session token
 export function terminateSession(): void {
     if (typeof window === 'undefined') return;
     localStorage.removeItem(SESSION_STORAGE_KEY);

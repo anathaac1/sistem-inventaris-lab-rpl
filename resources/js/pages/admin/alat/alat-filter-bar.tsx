@@ -54,9 +54,7 @@ export function AlatFilterBar({
                 </button>
             </div>
 
-            {/* 3-Column Grid Form */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-3.5 text-xs">
-                {/* Row 1 - Col 1: Nama Perangkat (Input biasa tanpa tombol X) */}
                 <div className="flex items-center gap-3">
                     <label className="w-32 shrink-0 font-medium text-slate-600 text-[11px] sm:text-xs">
                         Nama Alat
@@ -71,7 +69,6 @@ export function AlatFilterBar({
                     />
                 </div>
 
-                {/* Row 1 - Col 2: Kategori */}
                 <div className="flex items-center gap-3">
                     <label className="w-32 shrink-0 font-medium text-slate-600 text-[11px] sm:text-xs">
                         Kategori
@@ -105,7 +102,6 @@ export function AlatFilterBar({
                     </div>
                 </div>
 
-                {/* Row 1 - Col 3: Ketersediaan Stok */}
                 <div className="flex items-center gap-3">
                     <label className="w-32 shrink-0 font-medium text-slate-600 text-[11px] sm:text-xs">
                         Status Stok
@@ -137,7 +133,6 @@ export function AlatFilterBar({
                     </div>
                 </div>
 
-                {/* Row 2 - Col 1: Kode Alat (Input biasa tanpa tombol X) */}
                 <div className="flex items-center gap-3">
                     <label className="w-32 shrink-0 font-medium text-slate-600 text-[11px] sm:text-xs">
                         Kode Alat
@@ -152,7 +147,6 @@ export function AlatFilterBar({
                     />
                 </div>
 
-                {/* Row 2 - Col 2: Status Visibilitas */}
                 <div className="flex items-center gap-3">
                     <label className="w-32 shrink-0 font-medium text-slate-600 text-[11px] sm:text-xs">
                         Status Alat
@@ -183,11 +177,9 @@ export function AlatFilterBar({
                     </div>
                 </div>
 
-                {/* Row 2 - Col 3: Empty spacer for alignment */}
                 <div className="hidden md:block"></div>
             </div>
 
-            {/* Filter Action Buttons */}
             <div className="flex items-center justify-end gap-2.5 mt-4 pt-3 border-t border-slate-100">
                 <button
                     type="button"

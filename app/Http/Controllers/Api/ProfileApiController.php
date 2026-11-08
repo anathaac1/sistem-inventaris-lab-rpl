@@ -11,9 +11,6 @@ use Illuminate\Validation\Rule;
 
 class ProfileApiController extends Controller
 {
-    /**
-     * Get current user profile.
-     */
     public function show(Request $request): JsonResponse
     {
         $user = $request->user();
@@ -50,9 +47,6 @@ class ProfileApiController extends Controller
         ]);
     }
 
-    /**
-     * Update user profile via API.
-     */
     public function update(Request $request): JsonResponse
     {
         $user = $request->user();

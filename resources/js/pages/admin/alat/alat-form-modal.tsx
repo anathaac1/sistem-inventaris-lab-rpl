@@ -70,7 +70,6 @@ export function AlatFormModal({
         const file = e.target.files?.[0];
         if (!file) return;
 
-        // Validasi ukuran < 2MB
         if (file.size > 2 * 1024 * 1024) {
             alert('Ukuran gambar maksimal 2MB');
             return;
@@ -117,7 +116,6 @@ export function AlatFormModal({
                     </p>
                 </DialogHeader>
 
-                {/* Current Item Overview Banner when Editing */}
                 {editingItem && (
                     <div className="p-3 rounded-xl bg-blue-50/60 border border-blue-200/80 flex items-center gap-3">
                         <div className="w-12 h-12 rounded-lg bg-white border border-blue-200 flex items-center justify-center shrink-0 overflow-hidden">
@@ -143,7 +141,6 @@ export function AlatFormModal({
                 )}
 
                 <form onSubmit={onSubmit} className="space-y-4 text-xs pt-2">
-                    {/* Nama & Kode */}
                     <div className="grid grid-cols-3 gap-3">
                         <div className="col-span-2 space-y-2">
                             <label className="mb-1 block font-semibold text-slate-700">Nama Perangkat</label>
@@ -169,7 +166,6 @@ export function AlatFormModal({
                         </div>
                     </div>
 
-                    {/* Upload Gambar Perangkat */}
                     <div className="space-y-1.5 p-3 rounded-lg border border-slate-200 bg-slate-50/60">
                         <div className="flex items-center justify-between">
                             <label className="font-semibold text-slate-700 flex items-center gap-1.5">
@@ -239,7 +235,6 @@ export function AlatFormModal({
                         )}
                     </div>
 
-                    {/* Kategori */}
                     <div className="space-y-1">
                         <label className="mb-1 block font-semibold text-slate-700">Kategori</label>
                         <div className="relative">
@@ -261,10 +256,8 @@ export function AlatFormModal({
                             <ChevronDown className="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                         </div>
                     </div>
-                    {/* Stok & Total */}
                     <div className="space-y-1">
                         <div className="grid grid-cols-2 gap-3">
-                            {/* Stok Siap Pakai */}
                             <div className="space-y-1">
                                 <label className="mb-1 block font-semibold text-slate-700">Stok Siap Pakai</label>
                                 <div className={`flex items-center justify-between rounded border bg-white p-1 ${
@@ -310,7 +303,6 @@ export function AlatFormModal({
                                 </div>
                             </div>
 
-                            {/* Total Unit Fisik Lab */}
                             <div className="space-y-1">
                                 <label className="mb-1 block font-semibold text-slate-700">Total Unit Fisik Lab</label>
                                 <div className="flex items-center justify-between rounded border border-slate-200 bg-white p-1">
@@ -360,7 +352,6 @@ export function AlatFormModal({
                     </div>
 
 
-                    {/* Deskripsi */}
                     <div className="space-y-1">
                         <label className="mb-1 block font-semibold text-slate-700">Deskripsi Alat</label>
                         <textarea
@@ -373,7 +364,6 @@ export function AlatFormModal({
                         />
                     </div>
 
-                    {/* Spesifikasi Teknis Dinamis */}
                     <div className="space-y-2 p-3 rounded    bg-slate-50 border border-slate-200">
                         <div className="flex items-center justify-between">
                             <label className="font-semibold text-slate-800 block">
@@ -425,7 +415,6 @@ export function AlatFormModal({
                         </div>
                     </div>
 
-                    {/* Visibility to Student Toggle */}
                     <div className="p-3.5 rounded border border-slate-200 bg-slate-50 flex items-center justify-between">
                         <div>
                             <p className="font-semibold text-slate-900">Status Alat (Aktif)</p>

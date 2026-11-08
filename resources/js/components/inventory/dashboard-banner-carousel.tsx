@@ -6,14 +6,11 @@ interface SlideData {
     title: React.ReactNode;
     subtitle: React.ReactNode;
     theme: 'light' | 'dark';
-    // badge: string;
-    // icon: React.ReactNode;
     image: string;
     alt: string;
 }
 
 export function DashboardBannerCarousel() {
-    // Urutan Tema: Light -> Dark -> Light -> Dark (Sesuai Permintaan)
     const slides: SlideData[] = [
         {
             number: '01',
@@ -38,8 +35,6 @@ export function DashboardBannerCarousel() {
         {
             number: '02',
             theme: 'dark',
-            // badge: 'Cepat & Simpel',
-            // icon: <Zap className="w-4 h-4 text-[#38BDF8]" />,
             title: (
                 <>
                     Peminjaman cepat
@@ -80,8 +75,6 @@ export function DashboardBannerCarousel() {
         {
             number: '04',
             theme: 'dark',
-            // badge: 'Tertib & Otomatis',
-            // icon: <CheckCircle2 className="w-4 h-4 text-[#38BDF8]" />,
             title: (
                 <>
                     Kembaliin barang,
@@ -120,7 +113,6 @@ export function DashboardBannerCarousel() {
         setCurrentIndex(idx);
     };
 
-    // Auto-slide interval (4.5 seconds)
     useEffect(() => {
         if (isPaused) return;
 
@@ -131,7 +123,6 @@ export function DashboardBannerCarousel() {
         return () => clearInterval(timer);
     }, [isPaused, nextSlide]);
 
-    // Touch swipe handlers
     const handleTouchStart = (e: React.TouchEvent) => {
         touchStartX.current = e.targetTouches[0].clientX;
     };
@@ -171,7 +162,6 @@ export function DashboardBannerCarousel() {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
         >
-            {/* Background Graphic Illustration - full bleed to right border without any gaps */}
             <div className="absolute right-0 top-0 bottom-0 w-[55%] sm:w-[58%] lg:w-[56%] pointer-events-none overflow-hidden">
                 <img
                     key={currentSlide.image}
@@ -180,7 +170,6 @@ export function DashboardBannerCarousel() {
                     className="w-full h-full object-cover object-right select-none transition-all duration-700 ease-in-out"
                     draggable={false}
                 />
-                {/* Soft Gradient Overlay on left edge for seamless blend to text */}
                 <div
                     className={`absolute left-0 top-0 bottom-0 w-16 sm:w-28 pointer-events-none transition-colors duration-500 ${
                         isDark
@@ -190,7 +179,6 @@ export function DashboardBannerCarousel() {
                 />
             </div>
 
-            {/* Subtle soft tint gradient overlay for mobile readability */}
             <div
                 className={`absolute inset-0 pointer-events-none sm:hidden transition-colors duration-500 ${
                     isDark
@@ -199,9 +187,7 @@ export function DashboardBannerCarousel() {
                 }`}
             />
 
-            {/* Slide Content Area */}
             <div className="relative z-10 px-5 py-5 sm:px-8 sm:py-7 flex flex-col justify-between min-h-[190px] sm:min-h-[220px]">
-                {/* Top: Slide Index Indicator (e.g. 01 / 04 ──────) */}
                 <div className="flex items-center gap-3">
                     <span
                         className={`text-xs sm:text-sm font-bold tracking-wider transition-colors duration-300 ${
@@ -219,20 +205,8 @@ export function DashboardBannerCarousel() {
                             isDark ? 'bg-slate-700' : 'bg-slate-200'
                         }`}
                     />
-
-                    {/* <span
-                        className={`hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold border transition-colors duration-300 ${
-                            isDark
-                                ? 'bg-sky-950/70 text-sky-300 border-sky-800/60'
-                                : 'bg-blue-50 text-[#0256D0] border-blue-100'
-                        }`}
-                    >
-                        {currentSlide.icon}
-                        {currentSlide.badge}
-                    </span> */}
                 </div>
 
-                {/* Middle: Main Headline & Subtitle */}
                 <div className="my-2 sm:my-3 max-w-[56%] sm:max-w-[50%] lg:max-w-[48%]">
                     <h2
                         key={`title-${currentIndex}`}
@@ -253,7 +227,6 @@ export function DashboardBannerCarousel() {
                     </p>
                 </div>
 
-                {/* Bottom: Pagination Pill & Dots (matching Figma design) */}
                 <div className="flex items-center gap-2 pt-1">
                     {slides.map((_, idx) => {
                         const isActive = idx === currentIndex;
@@ -278,7 +251,6 @@ export function DashboardBannerCarousel() {
                 </div>
             </div>
 
-            {/* Navigation Arrow Controls (Shown on hover) */}
             <button
                 type="button"
                 onClick={prevSlide}

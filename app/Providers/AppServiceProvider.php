@@ -10,25 +10,15 @@ use Illuminate\Validation\Rules\Password;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
-        //
     }
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
         $this->configureDefaults();
     }
 
-    /**
-     * Seed default student and admin accounts if missing.
-     */
     protected function ensureDefaultAccounts(): void
     {
         try {
@@ -124,13 +114,9 @@ class AppServiceProvider extends ServiceProvider
                 );
             }
         } catch (\Throwable) {
-            // Silently continue if database or migration not ready
         }
     }
 
-    /**
-     * Configure default behaviors for production-ready applications.
-     */
     protected function configureDefaults(): void
     {
         Date::use(CarbonImmutable::class);

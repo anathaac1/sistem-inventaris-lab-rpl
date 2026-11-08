@@ -1,4 +1,4 @@
-import { Clock, Calendar, RotateCcw, Box } from 'lucide-react';
+import { Clock, Calendar, Box } from 'lucide-react';
 import { ItemIllustration } from '@/components/inventory/item-illustration';
 import { Button } from '@/components/ui/button';
 import type { LoanItem } from '@/data/inventory-data';
@@ -65,7 +65,6 @@ export function PeminjamanActiveList({
                             onClick={() => onReturnItem(loan)}
                             className="text-xs h-8 border-blue-600 text-blue-600 bg-white hover:bg-blue-50 hover:text-blue-600 focus:bg-white focus:text-blue-600 active:text-blue-600 shrink-0 cursor-pointer"
                         >
-                            {/* <RotateCcw className="w-3.5 h-3.5 mr-1.5" /> */}
                             Kembalikan
                         </Button>
                     </div>

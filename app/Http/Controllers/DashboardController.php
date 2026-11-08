@@ -11,9 +11,6 @@ use Inertia\Response;
 
 class DashboardController extends Controller
 {
-    /**
-     * Display student dashboard with active items and user loans.
-     */
     public function index(Request $request): Response|\Illuminate\Http\RedirectResponse
     {
         $user = $request->user();
@@ -26,7 +23,6 @@ class DashboardController extends Controller
                 (new InventorySeeder())->run();
             }
 
-            // Bersihkan emoji sparkles jika masih ada di database
             Alat::where('description', 'like', '%✨%')->get()->each(function ($a) {
                 $a->description = trim(str_replace('✨', '', $a->description));
                 $a->save();

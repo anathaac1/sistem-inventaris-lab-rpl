@@ -116,31 +116,6 @@ export function ProfileModal({ isOpen, onClose, session, user }: ProfileModalPro
                         />
 
                         <ProfileInfoCard adminUsername={adminUsername} />
-
-                        {/* Action buttons */}
-                        <div className="bg-white border border-slate-200/90 rounded-xl divide-y divide-slate-100 shadow-2xs overflow-hidden">
-                            {/* Ganti Kata Sandi */}
-                            {/* <button
-                                type="button"
-                                onClick={() => setPasswordModalOpen(true)}
-                                className="w-full flex items-center justify-between p-3.5 hover:bg-slate-50 transition-colors text-left group cursor-pointer"
-                            >
-                                <div className="flex items-center gap-3">
-                                    <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#0256D0] flex items-center justify-center shrink-0 group-hover:bg-[#0256D0] group-hover:text-white transition-colors">
-                                        <Lock className="w-4 h-4" />
-                                    </div>
-                                    <div>
-                                        <p className="text-xs font-semibold text-slate-900 group-hover:text-[#0256D0] transition-colors">
-                                            Ganti Kata Sandi Admin
-                                        </p>
-                                        <p className="text-[11px] text-slate-500">
-                                            Perbarui kata sandi akun kepala laboratorium
-                                        </p>
-                                    </div>
-                                </div>
-                                <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-slate-600" />
-                            </button> */}
-                        </div>
                     </div>
                 </DialogContent>
             </Dialog>

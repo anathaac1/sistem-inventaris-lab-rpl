@@ -12,9 +12,6 @@ use Inertia\Response;
 
 class SiswaController extends Controller
 {
-    /**
-     * Display student account management page.
-     */
     public function index(Request $request): Response|RedirectResponse
     {
         $user = $request->user();
@@ -59,9 +56,6 @@ class SiswaController extends Controller
         ]);
     }
 
-    /**
-     * Store new student account.
-     */
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
@@ -89,9 +83,6 @@ class SiswaController extends Controller
         return redirect()->back()->with('success', "Akun untuk {$validated['name']} berhasil dibuat!");
     }
 
-    /**
-     * Reset student password.
-     */
     public function resetPassword(Request $request): RedirectResponse
     {
         $validated = $request->validate([
@@ -116,9 +107,6 @@ class SiswaController extends Controller
         return redirect()->back()->with('success', "Password untuk akun {$user->name} ({$username}) berhasil diperbarui.");
     }
 
-    /**
-     * Delete student account.
-     */
     public function destroy(User $user): RedirectResponse
     {
         $activeLoans = $user->peminjamans()->where('status', 'Sedang Dipinjam')->count();

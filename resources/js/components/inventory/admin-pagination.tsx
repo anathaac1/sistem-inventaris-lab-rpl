@@ -17,16 +17,15 @@ export function AdminPagination({
     totalPages,
     totalItems,
     itemsPerPage,
-    onPageChange,
+    onPageChange, 
     onItemsPerPageChange,
     itemsPerPageOptions = [10, 20, 50, 100],
 }: AdminPaginationProps) {
     if (totalItems === 0) return null;
 
     const from = Math.min((currentPage - 1) * itemsPerPage + 1, totalItems);
-    const to = Math.min(currentPage * itemsPerPage, totalItems);
+    const to = Math.min(currentPage * itemsPerPage, totalItems); 
 
-    // Generate page numbers with ellipses
     const getPageNumbers = () => {
         const pages: (number | string)[] = [];
         const maxVisible = 5;
@@ -69,7 +68,6 @@ export function AdminPagination({
 
     return (
         <div className="px-4 py-3 sm:px-6 bg-white border-t border-slate-200/90 text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-3 select-none">
-            {/* Sisi Kiri: Baris per halaman [5 v] */}
             <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-start">
                 <span className="text-slate-500 text-xs">Baris per halaman</span>
 
@@ -97,16 +95,12 @@ export function AdminPagination({
                 )}
             </div>
 
-            {/* Sisi Kanan: 1 - 3 dari 3  <  [ 1 ]  > */}
             <div className="flex items-center gap-3 self-end sm:self-auto">
-                {/* 1 - 3 dari 3 */}
                 <span className="text-slate-500 text-xs font-normal whitespace-nowrap">
                     {from} - {to} dari {totalItems}
                 </span>
 
-                {/* Tombol Navigasi Halaman */}
                 <div className="flex items-center gap-1">
-                    {/* Tombol Sebelumnya (<) */}
                     <button
                         type="button"
                         onClick={() => onPageChange(Math.max(1, currentPage - 1))}
@@ -118,7 +112,6 @@ export function AdminPagination({
                         <ChevronLeft className="w-4 h-4" />
                     </button>
 
-                    {/* Nomor Halaman */}
                     <div className="flex items-center gap-1 mx-0.5">
                         {pages.map((p, idx) => {
                             if (p === '...') {
@@ -147,7 +140,6 @@ export function AdminPagination({
                         })}
                     </div>
 
-                    {/* Tombol Berikutnya (>) */}
                     <button
                         type="button"
                         onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}

@@ -34,16 +34,9 @@ export function DimensionMetrics({
                     <SlidersHorizontal className="w-3.5 h-3.5 text-[#0256D0]" />
                     <span>Dimensi Analitik </span>
                 </span>
-                {/* <span className="text-slate-400 text-[11px]">
-                    {activeTab === 'all' && ''}
-                    {activeTab === 'categories' && ''}
-                    {activeTab === 'loans' && ''}
-                    {activeTab === 'classes' && ''}
-                </span> */}
             </div>
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-                {/* Tab 1: Total Unit */}
                 <button
                     type="button"
                     onClick={() => onTabChange(activeTab === 'all' ? 'categories' : 'all')}
@@ -55,15 +48,6 @@ export function DimensionMetrics({
                 >
                     <div className="flex items-center justify-between">
                         <span className="text-xs font-bold text-slate-500">Total Unit Fisik</span>
-                        {/* <div
-                            className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${
-                                activeTab === 'all'
-                                    ? 'bg-blue-50 text-[#0256D0]'
-                                    : 'bg-slate-100 text-slate-500 group-hover:text-slate-900'
-                            }`}
-                        >
-                            <Layers className="w-4 h-4" />
-                        </div> */}
                     </div>
                     <p className="text-2xl sm:text-3xl font-black text-slate-900 mt-2 font-mono">
                         {totalUnits}
@@ -74,7 +58,6 @@ export function DimensionMetrics({
                     </div>
                 </button>
 
-                {/* Tab 2: Katalog Alat */}
                 <button
                     type="button"
                     onClick={() => onTabChange(activeTab === 'categories' ? 'all' : 'categories')}
@@ -86,15 +69,6 @@ export function DimensionMetrics({
                 >
                     <div className="flex items-center justify-between">
                         <span className="text-xs font-bold text-slate-500">Katalog Alat</span>
-                        {/* <div
-                            className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${
-                                activeTab === 'categories'
-                                    ? 'bg-blue-50 text-[#0256D0]'
-                                    : 'bg-slate-100 text-slate-500 group-hover:text-slate-900'
-                            }`}
-                        >
-                            <Box className="w-4 h-4" />
-                        </div> */}
                     </div>
                     <p className="text-2xl sm:text-3xl font-black text-slate-900 mt-2 font-mono">
                         {catalogCount}
@@ -105,7 +79,6 @@ export function DimensionMetrics({
                     </div>
                 </button>
 
-                {/* Tab 3: Sedang Dipinjam */}
                 <button
                     type="button"
                     onClick={() => onTabChange(activeTab === 'loans' ? 'all' : 'loans')}
@@ -117,15 +90,6 @@ export function DimensionMetrics({
                 >
                     <div className="flex items-center justify-between">
                         <span className="text-xs font-bold text-slate-500">Sedang Dipinjam</span>
-                        {/* <div
-                            className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${
-                                activeTab === 'loans'
-                                    ? 'bg-amber-50 text-amber-600'
-                                    : 'bg-slate-100 text-slate-500 group-hover:text-slate-900'
-                            }`}
-                        >
-                            <ClipboardList className="w-4 h-4" />
-                        </div> */}
                     </div>
                     <p className="text-2xl sm:text-3xl font-black text-slate-900 mt-2 font-mono">
                         {activeLoansCount}
@@ -136,7 +100,6 @@ export function DimensionMetrics({
                     </div>
                 </button>
 
-                {/* Tab 4: Siswa Terdata */}
                 <button
                     type="button"
                     onClick={() => onTabChange(activeTab === 'classes' ? 'all' : 'classes')}
@@ -148,15 +111,6 @@ export function DimensionMetrics({
                 >
                     <div className="flex items-center justify-between">
                         <span className="text-xs font-bold text-slate-500">Siswa Terdata</span>
-                        {/* <div
-                            className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${
-                                activeTab === 'classes'
-                                    ? 'bg-emerald-50 text-emerald-600'
-                                    : 'bg-slate-100 text-slate-500 group-hover:text-slate-900'
-                            }`}
-                        >
-                            <GraduationCap className="w-4 h-4" />
-                        </div> */}
                     </div>
                     <p className="text-2xl sm:text-3xl font-black text-slate-900 mt-2 font-mono">
                         {studentCount}

@@ -27,21 +27,17 @@ interface AdminAlatProps {
 export default function AdminAlat({ initialItems = [] }: AdminAlatProps) {
     const items = initialItems;
 
-    // Filter Form Values & Applied Filter State
     const [filterForm, setFilterForm] = useState<AlatFilterValues>(DEFAULT_ALAT_FILTERS);
     const [appliedFilters, setAppliedFilters] = useState<AlatFilterValues>(DEFAULT_ALAT_FILTERS);
 
-    // Pagination State
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
 
-    // Modal state
     const [isFormModalOpen, setIsFormModalOpen] = useState(false);
     const [editingItem, setEditingItem] = useState<InventoryItem | null>(null);
     const [selectedDetailItem, setSelectedDetailItem] = useState<InventoryItem | null>(null);
     const [deleteConfirmItem, setDeleteConfirmItem] = useState<InventoryItem | null>(null);
 
-    // Form fields
     const [formData, setFormData] = useState<AlatFormData>({
         name: '',
         code: '',
@@ -58,7 +54,6 @@ export default function AdminAlat({ initialItems = [] }: AdminAlatProps) {
         removeImage: false
     });
 
-    // Filter items based on appliedFilters
     const filteredItems = items.filter((item) => {
         const nameQuery = appliedFilters.name.toLowerCase().trim();
         const matchesName = !nameQuery || item.name.toLowerCase().includes(nameQuery);
@@ -69,7 +64,6 @@ export default function AdminAlat({ initialItems = [] }: AdminAlatProps) {
         const matchesCategory =
             appliedFilters.category === 'Semua' || item.category === appliedFilters.category;
 
-        // Stock status logic
         let matchesStock = true;
         if (appliedFilters.stockStatus === 'in_stock') {
             matchesStock = item.stock > 2;
@@ -99,7 +93,6 @@ export default function AdminAlat({ initialItems = [] }: AdminAlatProps) {
         setCurrentPage(1);
     };
 
-    // Pagination Calculations
     const totalPages = Math.max(1, Math.ceil(filteredItems.length / itemsPerPage));
     const safeCurrentPage = Math.min(currentPage, totalPages);
     const paginatedItems = filteredItems.slice(
@@ -107,7 +100,6 @@ export default function AdminAlat({ initialItems = [] }: AdminAlatProps) {
         safeCurrentPage * itemsPerPage
     );
 
-    // Toggle single item visibility to students
     const handleToggleVisibility = (itemId: string) => {
         const item = items.find((i) => i.id === itemId);
         if (!item) return;
@@ -128,7 +120,6 @@ export default function AdminAlat({ initialItems = [] }: AdminAlatProps) {
         });
     };
 
-    // Open add modal (Create)
     const handleOpenAdd = () => {
         setEditingItem(null);
         setFormData({
@@ -149,7 +140,6 @@ export default function AdminAlat({ initialItems = [] }: AdminAlatProps) {
         setIsFormModalOpen(true);
     };
 
-    // Open edit modal (Update)
     const handleOpenEdit = (item: InventoryItem) => {
         setEditingItem(item);
 
@@ -178,7 +168,6 @@ export default function AdminAlat({ initialItems = [] }: AdminAlatProps) {
         setIsFormModalOpen(true);
     };
 
-    // Save add/edit
     const handleSaveForm = (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -245,7 +234,6 @@ export default function AdminAlat({ initialItems = [] }: AdminAlatProps) {
         }
     };
 
-    // DELETE
     const handleConfirmDelete = () => {
         if (!deleteConfirmItem) return;
 
@@ -300,14 +288,12 @@ export default function AdminAlat({ initialItems = [] }: AdminAlatProps) {
                 </div>
             </div>
 
-            {/* Read / Detail Modal */}
             <AlatDetailModal
                 item={selectedDetailItem}
                 onClose={() => setSelectedDetailItem(null)}
                 onEdit={handleOpenEdit}
             />
 
-            {/* Create / Edit Form Modal */}
             <AlatFormModal
                 isOpen={isFormModalOpen}
                 onClose={() => setIsFormModalOpen(false)}
@@ -317,7 +303,6 @@ export default function AdminAlat({ initialItems = [] }: AdminAlatProps) {
                 onSubmit={handleSaveForm}
             />
 
-            {/* Delete Confirmation Modal */}
             <AlatDeleteModal
                 item={deleteConfirmItem}
                 onClose={() => setDeleteConfirmItem(null)}

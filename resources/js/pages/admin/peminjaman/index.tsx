@@ -24,15 +24,12 @@ interface AdminPeminjamanProps {
 export default function AdminPeminjaman({ initialLoans = [] }: AdminPeminjamanProps) {
     const loans = initialLoans;
 
-    // Filter Form Values & Applied Filter State
     const [filterForm, setFilterForm] = useState<PeminjamanFilterValues>(DEFAULT_LOAN_FILTERS);
     const [appliedFilters, setAppliedFilters] = useState<PeminjamanFilterValues>(DEFAULT_LOAN_FILTERS);
 
-    // Pagination State
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
 
-    // Filter based on appliedFilters
     const filteredLoans = loans.filter((loan) => {
         const borrowerQuery = appliedFilters.borrowerName.toLowerCase().trim();
         const matchesBorrower = !borrowerQuery || loan.borrowerName.toLowerCase().includes(borrowerQuery);
@@ -66,7 +63,6 @@ export default function AdminPeminjaman({ initialLoans = [] }: AdminPeminjamanPr
         setCurrentPage(1);
     };
 
-    // Pagination Calculations
     const totalPages = Math.max(1, Math.ceil(filteredLoans.length / itemsPerPage));
     const safeCurrentPage = Math.min(currentPage, totalPages);
     const paginatedLoans = filteredLoans.slice(
@@ -77,7 +73,6 @@ export default function AdminPeminjaman({ initialLoans = [] }: AdminPeminjamanPr
     const activeCount = loans.filter((l) => l.status === 'Sedang Dipinjam').length;
     const returnedCount = loans.filter((l) => l.status === 'Dikembalikan').length;
 
-    // Process Return
     const handleReturnItem = (loanId: string) => {
         const targetLoan = loans.find((l) => l.id === loanId);
         if (!targetLoan) return;

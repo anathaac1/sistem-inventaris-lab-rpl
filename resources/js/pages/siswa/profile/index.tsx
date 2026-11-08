@@ -114,10 +114,8 @@ export default function Profile({ initialUser }: ProfileProps) {
             <Head title="Profil Siswa - Sistem Inventory Lab RPL" />
 
             <div className="max-w-xl mx-auto space-y-4">
-                {/* Header with Back Arrow and Edit Button */}
                 <ProfileHeader onOpenEditModal={() => setEditModalOpen(true)} />
 
-                {/* Profile Student ID Card */}
                 <ProfileStudentCard
                     studentName={studentName}
                     studentClass={studentClass}
@@ -125,10 +123,8 @@ export default function Profile({ initialUser }: ProfileProps) {
                     avatarInitials={avatarInitials}
                 />
 
-                {/* Quick Navigation Links */}
                 <ProfileNavLinks />
 
-                {/* Security Card (Edit Profile, Password & Logout) */}
                 <ProfileSecurityCard
                     onOpenEditModal={() => setEditModalOpen(true)}
                     onOpenPasswordModal={() => setPasswordModalOpen(true)}
@@ -136,7 +132,6 @@ export default function Profile({ initialUser }: ProfileProps) {
                 />
             </div>
 
-            {/* Edit Profile Modal */}
             <ProfileEditModal
                 isOpen={editModalOpen}
                 onClose={() => setEditModalOpen(false)}
@@ -152,7 +147,6 @@ export default function Profile({ initialUser }: ProfileProps) {
                 }}
             />
 
-            {/* Change Password Dialog Modal */}
             <ProfilePasswordModal
                 isOpen={passwordModalOpen}
                 onClose={() => setPasswordModalOpen(false)}

@@ -54,7 +54,6 @@ export function ActiveLoansMonitor({ activeLoans }: ActiveLoansMonitorProps) {
                             className="p-4 sm:p-5 flex items-center justify-between gap-4 transition-colors hover:bg-slate-50/70"
                         >
                             <div className="min-w-0 flex items-start gap-3.5">
-                                {/* Borrower Initials */}
                                 <div className="w-10 h-10 rounded bg-slate-100 text-[#0256D0] font-black text-xs flex items-center justify-center shrink-0 border border-slate-200/80 shadow-2xs">
                                     {loan.borrowerName.substring(0, 2).toUpperCase()}
                                 </div>
@@ -90,10 +89,8 @@ export function ActiveLoansMonitor({ activeLoans }: ActiveLoansMonitorProps) {
                                 </div>
                             </div>
 
-                            {/* Status Tag (Read-only monitoring) */}
                             <div className="shrink-0 flex items-center gap-2">
                                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
-                                    {/* <span className="w-2 h-2 rounded bg-amber-500 animate-pulse" /> */}
                                     <span>Sedang Dipinjam</span>
                                 </span>
                             </div>

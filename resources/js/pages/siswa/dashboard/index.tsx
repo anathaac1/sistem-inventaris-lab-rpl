@@ -108,14 +108,12 @@ export default function Dashboard({ initialItems = [], initialActiveLoans = [] }
             <Head title="Beranda - Sistem Inventory Lab RPL" />
 
             <div className="space-y-5">
-                {/* Greeting Header & Last Login Badge */}
                 <DashboardGreeting
                     studentName={studentName}
                     loginDateStr={loginDateStr}
                     loginTimeStr={loginTimeStr}
                 />
 
-                {/* Search Bar + Filter Button */}
                 <DashboardSearchBar
                     searchQuery={searchQuery}
                     onSearchChange={setSearchQuery}
@@ -123,27 +121,22 @@ export default function Dashboard({ initialItems = [], initialActiveLoans = [] }
                     onOpenFilter={() => setFilterSheetOpen(true)}
                 />
 
-                {/* Banner Carousel */}
                 <DashboardBannerCarousel />
 
-                {/* Category Quick Filter Row */}
                 <DashboardCategoryGrid
                     categories={categories}
                     selectedCategory={selectedCategory}
                     onSelectCategory={setSelectedCategory}
                 />
 
-                {/* Section: "Alat Tersedia" */}
                 <DashboardAvailableTools
                     items={filteredItems}
                     onOpenDetail={handleOpenDetail}
                 />
 
-                {/* Section: "Terakhir Dipinjam" */}
                 <DashboardActiveLoans loans={activeLoans} />
             </div>
 
-            {/* Filter Bottom Sheet */}
             <FilterSheet
                 isOpen={filterSheetOpen}
                 onClose={() => setFilterSheetOpen(false)}
@@ -158,7 +151,6 @@ export default function Dashboard({ initialItems = [], initialActiveLoans = [] }
                 }}
             />
 
-            {/* Item Detail Modal for Borrowing */}
             {selectedItem && (
                 <ItemDetailModal
                     item={selectedItem}

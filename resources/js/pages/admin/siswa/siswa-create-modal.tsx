@@ -75,24 +75,16 @@ export function SiswaCreateModal({
             <DialogContent className="max-w-xl rounded-md bg-white p-6 border border-slate-300 shadow-xl max-h-[90vh] overflow-y-auto">
                 <DialogHeader className="border-b border-slate-200 pb-3">
                     <DialogTitle className="text-base font-bold text-slate-900 flex items-center gap-2.5">
-                        {/* <div className="w-8 h-8 rounded-md bg-blue-50 text-[#0256D0] flex items-center justify-center border border-blue-200">
-                            <UserPlus className="w-4 h-4 text-[#0256D0]" />
-                        </div> */}
                         <span>Tambah Akun Pengguna Baru</span>
                     </DialogTitle>
-                    {/* <DialogDescription className="text-xs text-slate-500 mt-1">
-                        Daftarkan akun siswa atau admin baru untuk akses sistem inventaris lab.
-                    </DialogDescription> */}
                 </DialogHeader>
 
                 <form onSubmit={handleFormSubmit} className="space-y-4 pt-3">
-                    {/* Section 1: Peran & Data Utama (Card Kotak) */}
                     <div className="border border-slate-200 rounded p-3.5 bg-slate-50/50 space-y-3.5">
                         <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wider block">
                             1. Peran & Akses Akun
                         </span>
 
-                        {/* Role Buttons */}
                         <div className="grid grid-cols-2 gap-2">
                             <button
                                 type="button"
@@ -124,7 +116,6 @@ export function SiswaCreateModal({
                             </button>
                         </div>
 
-                        {/* Name & Username */}
                         <div className="space-y-3">
                             <div className="space-y-1">
                                 <label className="text-xs font-semibold text-slate-700 block">
@@ -190,7 +181,6 @@ export function SiswaCreateModal({
                         </div>
                     </div>
 
-                    {/* Section 2: Kontak & Identitas Tambahan (Card Kotak) */}
                     <div className="border border-slate-200 rounded p-3.5 bg-slate-50/50 space-y-3">
                         <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wider block">
                             2. Kontak & Identitas
@@ -239,7 +229,6 @@ export function SiswaCreateModal({
                         </div>
                     </div>
 
-                    {/* Section 3: Keamanan & Password (Card Kotak) */}
                     <div className="border border-slate-200 rounded p-3.5 bg-slate-50/50 space-y-2.5">
                         <div className="flex items-center justify-between">
                             <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wider block">
@@ -263,7 +252,6 @@ export function SiswaCreateModal({
                         />
                     </div>
 
-                    {/* Actions */}
                     <div className="flex items-center justify-end gap-2 pt-3 border-t border-slate-200">
                         <Button
                             type="button"
@@ -278,7 +266,6 @@ export function SiswaCreateModal({
                             disabled={isSubmitting || !formData.name || !formData.username || !formData.password}
                             className="h-9 px-4 rounded-md bg-[#0256D0] hover:bg-blue-700 text-white text-xs font-bold shadow-xs cursor-pointer"
                         >
-                            {/* <Check className="w-3.5 h-3.5 mr-1.5" /> */}
                             <span>{isSubmitting ? 'Menyimpan...' : 'Simpan User Baru'}</span>
                         </Button>
                     </div>

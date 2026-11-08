@@ -13,9 +13,6 @@ use Inertia\Response;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display administrator profile.
-     */
     public function index(Request $request): Response
     {
         try {
@@ -37,9 +34,6 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
-     * Update administrator profile.
-     */
     public function update(Request $request): RedirectResponse
     {
         $admin = $request->user() ?? User::where('role', 'admin')->first();
@@ -72,9 +66,6 @@ class ProfileController extends Controller
         return redirect()->back()->with('success', 'Profil administrator berhasil diperbarui!');
     }
 
-    /**
-     * Update administrator password.
-     */
     public function updatePassword(Request $request): RedirectResponse
     {
         $validated = $request->validate([

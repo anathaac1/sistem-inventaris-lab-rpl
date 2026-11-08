@@ -17,12 +17,10 @@ export function ProfileBanner({ adminName, adminUsername, adminInitials }: Profi
 
             <div className="relative z-10 flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4 min-w-0">
-                    {/* Avatar */}
                     <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0 font-black text-xl shadow-xs">
                         {adminInitials}
                     </div>
 
-                    {/* Identity */}
                     <div className="min-w-0">
                         <h2 className="text-base sm:text-lg font-bold text-white truncate">
                             {adminName}

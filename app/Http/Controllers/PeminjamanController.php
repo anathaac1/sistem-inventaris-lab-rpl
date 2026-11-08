@@ -12,9 +12,6 @@ use Inertia\Response;
 
 class PeminjamanController extends Controller
 {
-    /**
-     * Display student loans page.
-     */
     public function index(Request $request): Response|RedirectResponse
     {
         $user = $request->user();
@@ -47,9 +44,6 @@ class PeminjamanController extends Controller
         ]);
     }
 
-    /**
-     * Store new loan application.
-     */
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
@@ -87,9 +81,6 @@ class PeminjamanController extends Controller
         return redirect()->back()->with('success', 'Peminjaman alat berhasil diajukan.');
     }
 
-    /**
-     * Return borrowed item.
-     */
     public function returnItem(Peminjaman $peminjaman): RedirectResponse
     {
         if ($peminjaman->status === 'Dikembalikan') {

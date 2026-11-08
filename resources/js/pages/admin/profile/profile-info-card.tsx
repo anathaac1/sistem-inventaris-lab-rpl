@@ -25,10 +25,6 @@ export function ProfileInfoCard({ adminUsername }: ProfileInfoCardProps) {
                 <span className="text-slate-500">Username Login</span>
                 <span className="font-bold text-slate-800">{adminUsername}</span>
             </div>
-            {/* <div className="flex justify-between py-3 px-4.5">
-                <span className="text-slate-500">Tingkat Hak Akses</span>
-                <span className="font-bold text-[#0256D0]">Super Admin (Penuh)</span>
-            </div> */}
         </div>
     );
 }

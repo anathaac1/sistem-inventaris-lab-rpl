@@ -10,12 +10,8 @@ use Illuminate\Support\Facades\Hash;
 
 class InventorySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        // 1. Seed Accounts
         $accounts = [
             [
                 'username' => 'admin',
@@ -96,7 +92,6 @@ class InventorySeeder extends Seeder
             );
         }
 
-        // 2. Seed Items
         $items = [
             [
                 'name' => 'Laptop Lenovo',
@@ -349,7 +344,6 @@ class InventorySeeder extends Seeder
             );
         }
 
-        // 3. Seed Initial Loans (6 Active Loans + History)
         $activeLoansData = [
             [
                 'username' => 'siswa1',
@@ -423,7 +417,6 @@ class InventorySeeder extends Seeder
             }
         }
 
-        // Additional history loans
         $siswa4 = $createdUsers['siswa4'] ?? null;
         if ($siswa4 && isset($createdAlats['PR-006'])) {
             Peminjaman::updateOrCreate(

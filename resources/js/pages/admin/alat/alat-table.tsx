@@ -44,7 +44,6 @@ export function AlatTable({
 
                             return (
                                 <tr key={item.id} className="hover:bg-slate-50/70 transition-colors">
-                                    {/* Device & Code */}
                                     <td className="py-3.5 px-5">
                                         <div className="flex items-center gap-3.5">
                                             <div
@@ -77,12 +76,10 @@ export function AlatTable({
                                         </div>
                                     </td>
 
-                                    {/* Category */}
                                     <td className="py-3.5 px-4 text-slate-700 font-medium">
                                         {item.category}
                                     </td>
 
-                                    {/* Stock Status */}
                                     <td className="py-3.5 px-4">
                                         <div className="flex items-center gap-2">
                                             <span
@@ -105,7 +102,6 @@ export function AlatTable({
                                         </div>
                                     </td>
 
-                                    {/* Status (Aktif / Tidak Aktif) */}
                                     <td className="py-3.5 px-4 text-center">
                                         <button
                                             type="button"
@@ -117,19 +113,12 @@ export function AlatTable({
                                             }`}
                                             title="Klik untuk beralih status (Aktif / Tidak Aktif)"
                                         >
-                                            {/* <span
-                                                className={`w-1.5 h-1.5 rounded-full ${
-                                                    isVisible ? 'bg-emerald-500' : 'bg-slate-400'
-                                                }`}
-                                            /> */}
                                             <span>{isVisible ? 'Aktif' : 'Tidak Aktif'}</span>
                                         </button>
                                     </td>
 
-                                    {/* Actions */}
                                     <td className="py-3.5 px-5 text-right">
                                         <div className="flex items-center justify-end gap-1.5">
-                                            {/* READ / DETAIL */}
                                             <button
                                                 type="button"
                                                 onClick={() => onViewDetail(item)}
@@ -139,7 +128,6 @@ export function AlatTable({
                                                 <Eye className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
                                             </button>
 
-                                            {/* UPDATE / EDIT */}
                                             <button
                                                 type="button"
                                                 onClick={() => onEdit(item)}
@@ -149,7 +137,6 @@ export function AlatTable({
                                                 <Edit2 className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
                                             </button>
 
-                                            {/* DELETE */}
                                             <button
                                                 type="button"
                                                 onClick={() => onDelete(item)}

@@ -34,7 +34,6 @@ export function ProfileEditModal({
 }: ProfileEditModalProps) {
     const [formData, setFormData] = useState<StudentProfileFormData>(initialData);
 
-    // Sync form data whenever modal opens
     React.useEffect(() => {
         if (isOpen) {
             setFormData(initialData);

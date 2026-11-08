@@ -95,7 +95,6 @@ class AlatController extends Controller
                 'image' => ['image', 'mimes:jpeg,png,jpg,webp,svg', 'max:2048'],
             ]);
 
-            // Hapus gambar lama jika ada di storage public
             if ($alat->image && Storage::disk('public')->exists($alat->image)) {
                 Storage::disk('public')->delete($alat->image);
             }

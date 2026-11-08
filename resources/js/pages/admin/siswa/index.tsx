@@ -32,27 +32,22 @@ export default function AdminSiswa({ initialStudents = [] }: AdminSiswaProps) {
         }
     }, [initialStudents]);
 
-    // Filter Form Values & Applied Filter State
     const [filterForm, setFilterForm] = useState<SiswaFilterValues>(DEFAULT_SISWA_FILTERS);
     const [appliedFilters, setAppliedFilters] = useState<SiswaFilterValues>(DEFAULT_SISWA_FILTERS);
 
     const [revealedPasswords, setRevealedPasswords] = useState<Record<string, boolean>>({});
 
-    // Pagination State
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
 
-    // Create User Modal State
     const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
     const [isCreatingUser, setIsCreatingUser] = useState(false);
 
-    // Reset Password Modal State
     const [isResetModalOpen, setIsResetModalOpen] = useState(false);
     const [selectedStudent, setSelectedStudent] = useState<UserAccount | null>(null);
     const [newPassword, setNewPassword] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // Filter accounts based on appliedFilters
     const filteredAccounts = accounts.filter((acc) => {
         const matchesRole =
             appliedFilters.role === 'all' || acc.role === appliedFilters.role;
@@ -84,7 +79,6 @@ export default function AdminSiswa({ initialStudents = [] }: AdminSiswaProps) {
         setCurrentPage(1);
     };
 
-    // Pagination Calculations
     const totalPages = Math.max(1, Math.ceil(filteredAccounts.length / itemsPerPage));
     const safeCurrentPage = Math.min(currentPage, totalPages);
     const paginatedAccounts = filteredAccounts.slice(

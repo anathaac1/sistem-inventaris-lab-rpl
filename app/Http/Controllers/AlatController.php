@@ -10,9 +10,6 @@ use Inertia\Response;
 
 class AlatController extends Controller
 {
-    /**
-     * Display student catalog of items.
-     */
     public function index(Request $request): Response|RedirectResponse
     {
         $user = $request->user();

@@ -12,9 +12,6 @@ use Inertia\Response;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display student profile.
-     */
     public function index(Request $request): Response
     {
         try {
@@ -37,9 +34,6 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
-     * Update student profile.
-     */
     public function update(Request $request): RedirectResponse
     {
         $user = $request->user() ?? User::where('role', 'siswa')->first();
@@ -73,9 +67,6 @@ class ProfileController extends Controller
         return redirect()->back()->with('success', 'Profil siswa berhasil diperbarui!');
     }
 
-    /**
-     * Update student password.
-     */
     public function updatePassword(Request $request): RedirectResponse
     {
         $validated = $request->validate([

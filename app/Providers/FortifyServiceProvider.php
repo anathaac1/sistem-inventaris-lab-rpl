@@ -15,17 +15,10 @@ use Laravel\Fortify\Fortify;
 
 class FortifyServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
-        //
     }
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
         $this->configureActions();
@@ -34,10 +27,6 @@ class FortifyServiceProvider extends ServiceProvider
         $this->configureAuthentication();
     }
 
-    /**
-     * Configure authentication and login redirection.
-     */
-    
     private function configureAuthentication(): void
     {
         Fortify::authenticateUsing(function (Request $request) {
@@ -130,14 +119,12 @@ class FortifyServiceProvider extends ServiceProvider
                         return $user;
                     }
 
-                    // Fallback check against known default password
                     if (isset($defaultAccounts[$cleanKey]) && $defaultAccounts[$cleanKey]['password'] === $request->password) {
                         $user->password = \Illuminate\Support\Facades\Hash::make($request->password);
                         $user->save();
                         return $user;
                     }
                 } else {
-                    // Auto-provision if default account
                     if (isset($defaultAccounts[$cleanKey]) && $defaultAccounts[$cleanKey]['password'] === $request->password) {
                         $accountData = $defaultAccounts[$cleanKey];
                         $accountData['password'] = \Illuminate\Support\Facades\Hash::make($accountData['password']);
@@ -145,7 +132,6 @@ class FortifyServiceProvider extends ServiceProvider
                     }
                 }
             } catch (\Throwable) {
-                // Dual-mode resilience
                 if (isset($defaultAccounts[$cleanKey]) && $defaultAccounts[$cleanKey]['password'] === $request->password) {
                     $accountData = $defaultAccounts[$cleanKey];
                     $accountData['id'] = $cleanKey === 'admin' ? 1 : 2;
@@ -190,17 +176,11 @@ class FortifyServiceProvider extends ServiceProvider
 }
 
 
-    /**
-     * Configure Fortify actions.
-     */
     private function configureActions(): void
     {
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
     }
 
-    /**
-     * Configure Fortify views.
-     */
     private function configureViews(): void
     {
         Fortify::loginView(fn (Request $request) => Inertia::render('auth/login', [
@@ -220,9 +200,6 @@ class FortifyServiceProvider extends ServiceProvider
 
     }
 
-    /**
-     * Configure rate limiting.
-     */
     private function configureRateLimiting(): void
     {
 

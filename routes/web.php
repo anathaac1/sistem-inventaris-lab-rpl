@@ -23,7 +23,6 @@ Route::get('/', function () {
     return redirect('/login');
 })->name('home');
 
-// Student Facing Routes
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('alat', [AlatController::class, 'index'])->name('alat.index');
 
@@ -36,7 +35,6 @@ Route::put('profile', [ProfileController::class, 'update'])->name('profile.updat
 Route::post('profile', [ProfileController::class, 'update'])->name('profile.update_post');
 Route::post('profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
 
-// Admin CMS Routes
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
 
@@ -61,5 +59,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    // Authenticated settings
 });

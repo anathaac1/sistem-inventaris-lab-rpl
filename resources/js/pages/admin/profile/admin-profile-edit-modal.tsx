@@ -49,7 +49,6 @@ export function AdminProfileEditModal({
             <DialogContent className="max-w-md p-6 bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden max-h-[90vh] overflow-y-auto">
                 <DialogHeader className="pb-3 border-b border-slate-100">
                     <DialogTitle className="text-base font-bold text-slate-900 flex items-center gap-2">
-                        {/* <User className="w-4 h-4 text-[#0256D0]" /> */}
                         <span>Edit Profil Administrator</span>
                     </DialogTitle>
                 </DialogHeader>

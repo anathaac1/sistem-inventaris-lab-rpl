@@ -497,13 +497,11 @@ export function getStoredLoans(): LoanItem[] {
             return defaultList;
         }
         const parsed = JSON.parse(data);
-        // Purge obsolete legacy mockup data if found
         const hasLegacyKenho = Array.isArray(parsed) && parsed.some((l: LoanItem) => l.borrowerName === 'Kenho Imut');
         if (hasLegacyKenho || !Array.isArray(parsed) || parsed.length === 0) {
             localStorage.setItem(LOANS_STORAGE_KEY, JSON.stringify(defaultList));
             return defaultList;
         }
-        // Normalize class names to RPL A / RPL B
         return parsed.map((loan: LoanItem) => ({
             ...loan,
             borrowerClass: loan.borrowerClass
