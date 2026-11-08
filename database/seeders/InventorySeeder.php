@@ -8,14 +8,25 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * Catatan:
+ * Seeder inti buat aplikasi inventaris lab RPL.
+ * Bertanggung jawab mengisi data awal (dummy data) yang realistis dan lengkap:
+ * 1. Akun Pengguna: 1 akun admin lab dan 6 akun siswa (lengkap dengan kelas, NISN, dan nomor HP).
+ * 2. Katalog Alat Lab: Laptop high-end, monitor, perlengkapan IoT/mikrokontroler, VR, peripheral, dan tools bengkel.
+ * 3. Transaksi Peminjaman: Data simulasi barang yang sedang dipinjam oleh siswa beserta riwayat barang yang sudah dikembalikan.
+ * Seeder ini juga dipanggil otomatis oleh DashboardController / PeminjamanController jika data kosong saat demo.
+ */
 class InventorySeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Menjalankan proses seeding inventaris secara menyeluruh.
      */
     public function run(): void
     {
-        // 1. Seed Accounts
+        // ==============================================================
+        // BAGIAN 1: SEEDING AKUN PENGGUNA (ADMIN & SISWA RPL)
+        // ==============================================================
         $accounts = [
             [
                 'username' => 'admin',
@@ -96,7 +107,10 @@ class InventorySeeder extends Seeder
             );
         }
 
-        // 2. Seed Items
+        // ==============================================================
+        // BAGIAN 2: SEEDING KATALOG INVENTARIS ALAT LAB RPL
+        // Berisi alat-alat lab (Laptop, Monitor, Peripheral, IoT, Tools)
+        // ==============================================================
         $items = [
             [
                 'name' => 'Laptop Lenovo',
@@ -349,7 +363,10 @@ class InventorySeeder extends Seeder
             );
         }
 
-        // 3. Seed Initial Loans (6 Active Loans + History)
+        // ==============================================================
+        // BAGIAN 3: SEEDING TRANSAKSI PEMINJAMAN ALAT
+        // Berisi 6 pinjaman aktif (status: Sedang Dipinjam) dan riwayat selesai
+        // ==============================================================
         $activeLoansData = [
             [
                 'username' => 'siswa1',

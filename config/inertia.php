@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Catatan Konfigurasi Inertia:
+ * File ini mengatur integrasi adapter Inertia.js untuk menghubungkan frontend React dengan Laravel:
+ * - Mengatur Server Side Rendering (SSR) jika diaktifkan.
+ * - Mengatur path direktori halaman React (resources/js/pages).
+ */
+
 return [
 
     /*

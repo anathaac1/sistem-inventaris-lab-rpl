@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Catatan Konfigurasi Fortify:
+ * File ini mengatur fitur autentikasi backend Laravel Fortify untuk aplikasi inventaris.
+ * Mengatur guard autentikasi ('web'), model reset password ('users'),
+ * kolom input login ('email' / 'username'), batas waktu konfirmasi password,
+ * serta fitur-fitur aktif (seperti reset password dan update profile).
+ */
+
 use Laravel\Fortify\Features;
 
 return [

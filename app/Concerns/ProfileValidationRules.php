@@ -6,10 +6,17 @@ use App\Models\User;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Validation\Rule;
 
+/**
+ * Catatan:
+ * Trait ini berisi kumpulan aturan validasi profil yang sering dipakai ulang (reusable),
+ * seperti aturan untuk field nama dan alamat email.
+ * Dengan dibuat sebagai trait terpisah, jika aturan nama atau email mau diubah,
+ * cukup ubah di satu file ini saja tanpa harus ubah di banyak controller / request class.
+ */
 trait ProfileValidationRules
 {
     /**
-     * Get the validation rules used to validate user profiles.
+     * Kumpulan aturan validasi gabungan untuk profil user (nama dan email).
      *
      * @return array<string, array<int, ValidationRule|array<mixed>|string>>
      */
@@ -22,7 +29,7 @@ trait ProfileValidationRules
     }
 
     /**
-     * Get the validation rules used to validate user names.
+     * Aturan validasi untuk nama user: wajib diisi, string, maksimal 255 karakter.
      *
      * @return array<int, ValidationRule|array<mixed>|string>
      */
@@ -32,7 +39,8 @@ trait ProfileValidationRules
     }
 
     /**
-     * Get the validation rules used to validate user emails.
+     * Aturan validasi untuk email user: wajib diisi, format email valid, maks 255 karakter,
+     * dan harus unik di tabel users (dengan pengecualian ID user itu sendiri jika sedang update profil).
      *
      * @return array<int, ValidationRule|array<mixed>|string>
      */

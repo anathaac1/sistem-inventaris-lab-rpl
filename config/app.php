@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Catatan Konfigurasi Aplikasi:
+ * File ini berisi setelan umum aplikasi inventaris lab:
+ * - Nama aplikasi (APP_NAME)
+ * - Environment aktif (local / production)
+ * - Mode debug (APP_DEBUG)
+ * - URL aplikasi (APP_URL)
+ * - Timezone default (WIB / Asia/Jakarta atau UTC) dan locale bahasa ('en' / 'id')
+ */
+
 return [
 
     /*

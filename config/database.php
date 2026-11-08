@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Catatan Konfigurasi Database:
+ * File ini mengatur koneksi database yang digunakan aplikasi (SQLite, MySQL, PostgreSQL).
+ * Secara default membaca setelan dari file .env (DB_CONNECTION, DB_HOST, DB_DATABASE, dll.).
+ * Juga mengatur koneksi Redis untuk cache/queue jika diaktifkan.
+ */
+
 use Illuminate\Support\Str;
 use Pdo\Mysql;
 

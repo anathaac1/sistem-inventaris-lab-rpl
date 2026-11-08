@@ -8,17 +8,22 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
+ * Catatan:
+ * Factory buat model User.
+ * Dipake waktu testing / pembuatan data dummy otomatis lewat Faker.
+ * Otomatis bikin nama acak, email unik acak, password default 'password', dan token pengingat.
+ *
  * @extends Factory<User>
  */
 class UserFactory extends Factory
 {
     /**
-     * The current password being used by the factory.
+     * Cache password default yang dipakai oleh factory.
      */
     protected static ?string $password;
 
     /**
-     * Define the model's default state.
+     * Definisi nilai default atribut model User saat di-generate.
      *
      * @return array<string, mixed>
      */
@@ -34,7 +39,7 @@ class UserFactory extends Factory
     }
 
     /**
-     * Indicate that the model's email address should be unverified.
+     * State untuk menandai user yang email-nya belum terverifikasi.
      */
     public function unverified(): static
     {
@@ -44,7 +49,7 @@ class UserFactory extends Factory
     }
 
     /**
-     * Indicate that the model has two-factor authentication configured.
+     * State untuk user dengan Two-Factor Authentication aktif.
      */
     public function withTwoFactor(): static {}
 }

@@ -12,22 +12,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 
 /**
- * @property int $id
- * @property string $name
- * @property string|null $username
- * @property string $email
- * @property string $role
- * @property string|null $class
- * @property string|null $nisn
- * @property string|null $phone
- * @property Carbon|null $email_verified_at
- * @property string $password
- * @property string|null $two_factor_secret
- * @property string|null $two_factor_recovery_codes
- * @property Carbon|null $two_factor_confirmed_at
- * @property string|null $remember_token
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
+ * Catatan:
+ * Model User mewakili tabel 'users' di database (akun pengguna aplikasi).
+ * Mendukung autentikasi login (Authenticatable) dan notifikasi.
+ * Menyimpan data akun pengguna baik yang ber-role 'admin' (pengelola lab)
+ * maupun 'siswa' (peminjam alat), beserta profilnya (nama, username, kelas, NISN, no HP).
  */
 #[Fillable(['name', 'username', 'email', 'password', 'role', 'class', 'nisn', 'phone'])]
 #[Hidden(['password', 'two_factor_secret', 'two_factor_recovery_codes', 'remember_token'])]
@@ -37,7 +26,8 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
-     * Get the attributes that should be cast.
+     * Konversi tipe data otomatis (casting) untuk kolom tertentu.
+     * Password otomatis di-hash saat disimpan.
      *
      * @return array<string, string>
      */
@@ -49,6 +39,10 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Relasi One-to-Many ke tabel peminjamans:
+     * Satu user (siswa) dapat memiliki banyak catatan transaksi peminjaman alat lab.
+     */
     public function peminjamans(): HasMany
     {
         return $this->hasMany(Peminjaman::class);

@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Catatan Konfigurasi Filesystem & Storage:
+ * File ini mengatur lokasi penyimpanan berkas (disks) di aplikasi:
+ * - Disk 'public': digunakan oleh AlatController untuk menyimpan foto alat lab (storage/app/public/alats).
+ *   File di folder ini bisa diakses langsung dari browser lewat symlink `storage/`.
+ * - Disk 'local': untuk penyimpanan internal pribadi.
+ */
+
 return [
 
     /*

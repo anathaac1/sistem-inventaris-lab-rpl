@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Catatan Konfigurasi Autentikasi:
+ * File ini mengatur konfigurasi autentikasi sistem Laravel:
+ * - Guard default: menggunakan guard 'web' berbasis session.
+ * - Provider user: menghubungkan autentikasi dengan model App\Models\User.
+ * - Password broker: mengatur tabel reset password (password_reset_tokens) dan masa kedaluwarsa token reset (60 menit).
+ */
+
 use App\Models\User;
 
 return [
